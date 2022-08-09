@@ -1,0 +1,70 @@
+.botao {
+    position: relative;
+    text-align: center;
+}
+
+.botao--estilo {
+    font-family: inherit;
+    font-size: inherit;
+    background-color: var(--verde);
+    width: 30%;
+    padding: 0.75rem 0;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 2px var(--preto);
+    color: var(--branco);
+}
+
+.logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 25%;
+}
+
+.botao--estilo:hover {
+    cursor: pointer;
+}
+
+.botao__link {
+    margin-top: 1.3rem;
+    color: var(--branco);
+}
+
+/*Botão timer*/
+.botao__iniciar {
+    margin-top: 1rem;
+    background-color: #1197cc;
+    box-shadow: #094c66 0px 6px 0px;
+    border-radius: 8px;
+    width: 50%;
+    transition: transform 200ms, box-shadow 200ms;
+}
+
+.botao__parar {
+    transform: translateY(6px);
+    background-color: #db332d;
+    box-shadow: #094c66 0px 0px 0px;
+}
+
+/*Botões da tabela*/
+.botao__tabela--estilo {
+    border: none;
+    color: var(--preto);
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    padding-left: 8px;
+    align-items: center;
+    display: flex;
+    border-radius: 5px;
+}
+
+.botao__tabela--estilo.deletar {
+    background-color: red;
+}
+
+.botao__tabela--estilo.alterar {
+    background-color: #f8b500;
+}

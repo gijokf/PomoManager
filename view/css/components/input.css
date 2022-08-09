@@ -1,0 +1,19 @@
+.input {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+
+  width: 100%;
+  border: 2px solid var(--cinza);
+  padding: 1rem;
+
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+
+  border-radius: 8px;
+}
+
+.input:focus {
+  outline: transparent;
+  border: 2px solid var(--secudaria-escuro);
+}

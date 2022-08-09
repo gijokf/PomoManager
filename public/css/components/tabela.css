@@ -1,0 +1,7 @@
+.tabela__tarefas {
+    width: 100%
+}
+
+.tabela__tarefas td:nth-child(2) {
+    display: none;
+}

@@ -1,0 +1,49 @@
+@import url(_variaveis.css);
+@import url(_reset.css);
+
+body {
+    font-family: var(--familia-corpo);
+    font-size: var(--tamanho-corpo);
+    color: var(--preto);
+
+    background: var(--branco);
+}
+
+.container {
+    padding: 1rem 1rem;
+}
+
+.container--centro {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px 0;
+}
+
+.titulo {
+    font-size: var(--tamanho-titulo);
+    margin-bottom: 1rem;
+}
+
+.titulo--destaque {
+    /*font-family: var(--familia-titulo-destaque);*/
+    color: var(--preto);
+    font-size: var(--tamanho-titulo-destaque);
+    font-weight: var(--peso-titulo-destaque);
+
+    display: block;
+
+    margin: 0 0.75rem;
+}
+
+.alinhamento--esquerda {
+    text-align: left;
+}
+
+.alinhamento--meio {
+    text-align: center;
+}

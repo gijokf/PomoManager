@@ -1,0 +1,29 @@
+.formulario--tamanho {
+    width: 420px;
+    background-color: var(--secundaria);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+    .titulo--destaque {
+        font-size: 2.25rem;
+    }
+
+    .titulo {
+        font-size: 1.75rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .titulo--destaque {
+        font-size: 3.25rem;
+    }
+
+    .titulo {
+        font-size: 2.25rem;
+    }
+}
