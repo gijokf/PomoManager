@@ -21,7 +21,7 @@
 <body>
 <div class="container--centro">
     <header class="cabecalho container">
-        <h1 class="titulo--destaque">
+        <h1 class="titulo--destaque logo">
             <img class="icone" src="assets/img/pomomanager_icon.png" alt="Ícone do PomoManager"/>
             PomoManager
         </h1>

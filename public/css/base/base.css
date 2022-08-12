@@ -30,13 +30,16 @@ body {
 }
 
 .titulo--destaque {
-    color: var(--verde);
     font-size: var(--tamanho-titulo-destaque);
     font-weight: var(--peso-titulo-destaque);
 
     display: block;
 
     margin: 0 0.75rem;
+}
+
+.logo {
+    color: var(--verde);
 }
 
 .titulo--secundario {

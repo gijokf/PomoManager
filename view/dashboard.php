@@ -20,22 +20,24 @@
     <link rel="stylesheet" href="css/components/modal.css"/>
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <?php
-    session_start();
-    if (!isset ($_SESSION["userID"])) {
-        header('Location: /login');
-    }
 
-    $userID = $_SESSION["userID"];
-    $userName = $_SESSION["userName"];
-    ?>
+    <!--  Commented for development  --><?php
+    //    session_start();
+    //    if (!isset ($_SESSION["userID"])) {
+    //        header('Location: /login');
+    //    }
+    //
+    //    $userID = $_SESSION["userID"];
+    //    $userName = $_SESSION["userName"];
+    //    ?>
 </head>
 <body>
 <header class="dashboard__cabecalho container">
     <div class="user__cabecalho">
         <img src="https://dummyimage.com/80x80/000/fff" class="user__avatar" alt="Avatar do usuário"/>
         <div class="titulo user__cabecalho--info">
-            <h2><?= $userName; ?></h2>
+            <!--            <h2>--><? //= $userName; ?><!--</h2>-->
+            <h2>teste</h2>
             <h3>Lvl. 1</h3>
         </div>
     </div>
@@ -45,33 +47,47 @@
 </header>
 <main class="card__grid-container container">
     <div class="card__container">
-        <button class="botao--estilo" id="open">Inserir tarefa</button>
-        <div class="container card__tarefas">
-            <h1 class="titulo">Tarefas</h1>
-
-            <table class="tabela__tarefas">
-                <tr>
-                    <td><input type="checkbox" value=""></td>
-                    <td>ID</td>
-                    <td>Descrição</td>
-                    <td>
-                        <button class="botao__tabela--estilo alterar" id="open-edit" value="" onclick="abrirAlterar()">
-                            <i data-feather="edit" aria-hidden="true"></i>
-                        </button>
-                    </td>
-                    <td>
-                        <button class="botao__tabela--estilo deletar" id="open-delete" value=""
-                                onclick="abrirDeletar()">
-                            <i data-feather="trash-2" aria-hidden="true"></i>
-                        </button>
-                    </td>
-                </tr>
-            </table>
+        <!--        <button class="botao--estilo" id="open">Inserir tarefa</button>-->
+        <!--        <div class="container card__tarefas">-->
+        <!--            <h1 class="titulo">Tarefas</h1>-->
+        <!---->
+        <!--            <table class="tabela__tarefas">-->
+        <!--                <tr>-->
+        <!--                    <td><input type="checkbox" value=""></td>-->
+        <!--                    <td>ID</td>-->
+        <!--                    <td>Descrição</td>-->
+        <!--                    <td>-->
+        <!--                        <button class="botao__tabela--estilo alterar" id="open-edit" value="" onclick="abrirAlterar()">-->
+        <!--                            <i data-feather="edit" aria-hidden="true"></i>-->
+        <!--                        </button>-->
+        <!--                    </td>-->
+        <!--                    <td>-->
+        <!--                        <button class="botao__tabela--estilo deletar" id="open-delete" value=""-->
+        <!--                                onclick="abrirDeletar()">-->
+        <!--                            <i data-feather="trash-2" aria-hidden="true"></i>-->
+        <!--                        </button>-->
+        <!--                    </td>-->
+        <!--                </tr>-->
+        <!--            </table>-->
+        <div class="tabela__tarefas">
+            <input type="checkbox" value="">
+            <p>Descrição</p>
+            <button class="botao__tabela--estilo alterar" id="open-edit" value=""
+                    onclick="abrirAlterar()">
+                <i data-feather="edit" aria-hidden="true"></i>
+            </button>
+            <button class="botao__tabela--estilo deletar" id="open-delete" value=""
+                    onclick="abrirDeletar()">
+                <i data-feather="trash-2" aria-hidden="true"></i>
+            </button>
         </div>
+
+        <button class="botao--tarefa">Inserir tarefa</button>
+        <!--        </div>-->
     </div>
 
     <div class="card__container">
-        <div class="container card__timer">
+        <div class="container card__central">
             <h1 class="titulo">Tarefa atual</h1>
             <p class="titulo--destaque">00:00</p>
             <br>

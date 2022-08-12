@@ -6,7 +6,7 @@ body {
     font-size: var(--tamanho-corpo);
     color: var(--preto);
 
-    background: var(--branco);
+    background: var(--verde-fundo);
 }
 
 .container {
@@ -30,8 +30,6 @@ body {
 }
 
 .titulo--destaque {
-    /*font-family: var(--familia-titulo-destaque);*/
-    color: var(--preto);
     font-size: var(--tamanho-titulo-destaque);
     font-weight: var(--peso-titulo-destaque);
 
@@ -40,10 +38,25 @@ body {
     margin: 0 0.75rem;
 }
 
+.logo {
+    color: var(--verde);
+}
+
+.titulo--secundario {
+    color: var(--branco);
+    margin: 1rem 0 1.5rem 0;
+}
+
 .alinhamento--esquerda {
     text-align: left;
 }
 
 .alinhamento--meio {
     text-align: center;
+}
+
+.icone {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 40px;
 }

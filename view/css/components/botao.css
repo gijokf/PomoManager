@@ -6,12 +6,13 @@
 .botao--estilo {
     font-family: inherit;
     font-size: inherit;
-    background-color: var(--verde-fundo);
+    background-color: var(--verde);
     width: 30%;
     padding: 0.75rem 0;
-    border-radius: 8px;
+    border-radius: 5px;
     border: none;
     box-shadow: 2px 2px 2px var(--preto);
+    color: var(--branco);
 }
 
 .logout {
@@ -28,6 +29,15 @@
 
 .botao__link {
     margin-top: 1.3rem;
+    color: var(--branco);
+}
+
+.botao--tarefa {
+    width: 200px;
+    background: tomato;
+    padding: 10px;
+    border-radius: 8px;
+    border-style: dashed;
 }
 
 /*Botão timer*/

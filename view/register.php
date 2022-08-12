@@ -24,9 +24,9 @@
 <div class="container--centro">
     <header class="cabecalho container">
         <img class="icone" src="assets/img/pomomanager_icon.png" alt="Ícone do PomoManager"/>
-        <h1 class="titulo--destaque">PomoManager</h1>
+        <h1 class="titulo--destaque logo">PomoManager</h1>
     </header>
-    
+
     <main>
         <div class="formulario">
             <section class="formulario--tamanho container">
