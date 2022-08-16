@@ -1,0 +1,21 @@
+:root {
+    --verde-fundo: rgba(13, 140, 26, 0.24);
+    --vermelho-tomate: #EDBDA1;
+    --verde: #0D8C1A;
+    --branco: #eceeff;
+    --secundaria: #E30613;
+    --secudaria-escuro: #727597;
+    --cinza: #909090;
+    --preto: #202020;
+
+    --familia-corpo: "Rubik", sans-serif;
+
+    --peso-titulo-destaque: 700;
+    --peso-destaque: 400;
+    --peso-normal: 300;
+
+    --tamanho-corpo: 1rem;
+    --tamanho-titulo: 1.375rem;
+    --tamanho-titulo-destaque: 2rem;
+    --tamanho-destaque: 1.375rem;
+}
