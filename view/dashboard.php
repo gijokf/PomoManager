@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="css/components/modal.css"/>
     <script src="https://unpkg.com/feather-icons"></script>
 
-
     <!--  Commented for development  --><?php
     //    session_start();
     //    if (!isset ($_SESSION["userID"])) {
@@ -47,28 +46,6 @@
 </header>
 <main class="card__grid-container container">
     <div class="card__container">
-        <!--        <button class="botao--estilo" id="open">Inserir tarefa</button>-->
-        <!--        <div class="container card__tarefas">-->
-        <!--            <h1 class="titulo">Tarefas</h1>-->
-        <!---->
-        <!--            <table class="tabela__tarefas">-->
-        <!--                <tr>-->
-        <!--                    <td><input type="checkbox" value=""></td>-->
-        <!--                    <td>ID</td>-->
-        <!--                    <td>Descrição</td>-->
-        <!--                    <td>-->
-        <!--                        <button class="botao__tabela--estilo alterar" id="open-edit" value="" onclick="abrirAlterar()">-->
-        <!--                            <i data-feather="edit" aria-hidden="true"></i>-->
-        <!--                        </button>-->
-        <!--                    </td>-->
-        <!--                    <td>-->
-        <!--                        <button class="botao__tabela--estilo deletar" id="open-delete" value=""-->
-        <!--                                onclick="abrirDeletar()">-->
-        <!--                            <i data-feather="trash-2" aria-hidden="true"></i>-->
-        <!--                        </button>-->
-        <!--                    </td>-->
-        <!--                </tr>-->
-        <!--            </table>-->
         <div class="tabela__tarefas">
             <input type="checkbox" value="">
             <p>Descrição</p>
@@ -83,7 +60,6 @@
         </div>
 
         <button class="botao botao--tarefa" id="open">Inserir tarefa</button>
-        <!--        </div>-->
     </div>
 
     <div class="card__container">
