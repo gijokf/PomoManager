@@ -31,7 +31,7 @@
     //    $userName = $_SESSION["userName"];
     //    ?>
 </head>
-<body>
+<body class="dashboard__body">
 <header class="dashboard__cabecalho container">
     <div class="user__cabecalho">
         <img src="https://dummyimage.com/80x80/000/fff" class="user__avatar" alt="Avatar do usuário"/>
@@ -82,17 +82,19 @@
             </button>
         </div>
 
-        <button class="botao--tarefa">Inserir tarefa</button>
+        <button class="botao botao--tarefa" id="open">Inserir tarefa</button>
         <!--        </div>-->
     </div>
 
     <div class="card__container">
-        <div class="container card__central">
-            <h1 class="titulo">Tarefa atual</h1>
-            <p class="titulo--destaque">00:00</p>
-            <br>
-            <p>Ciclos da atividade atual: 0</p>
-            <button class="botao--estilo botao__iniciar">Iniciar</button>
+        <div class="card__central">
+            <div class="glass-effect">
+                <h1 class="titulo">Tarefa atual</h1>
+                <p class="titulo--destaque">00:00</p>
+                <br>
+                <p>Ciclos da atividade atual: 0</p>
+                <button class="botao--estilo botao__iniciar">Iniciar</button>
+            </div>
         </div>
     </div>
 

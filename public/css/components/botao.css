@@ -23,7 +23,7 @@
     height: 25%;
 }
 
-.botao--estilo:hover {
+.botao:hover {
     cursor: pointer;
 }
 
@@ -32,11 +32,19 @@
     color: var(--branco);
 }
 
+.botao--tarefa {
+    width: 200px;
+    background: tomato;
+    padding: 10px;
+    border-radius: 8px;
+    border-style: dashed;
+}
+
 /*Botão timer*/
 .botao__iniciar {
     margin-top: 1rem;
-    background-color: #1197cc;
-    box-shadow: #094c66 0px 6px 0px;
+    background-color: var(--verde);
+    box-shadow: #0a5b12 0px 6px 0px;
     border-radius: 8px;
     width: 50%;
     transition: transform 200ms, box-shadow 200ms;

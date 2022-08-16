@@ -9,6 +9,10 @@ body {
     background: var(--verde-fundo);
 }
 
+.dashboard__body {
+    background: var(--vermelho-tomate);
+}
+
 .container {
     padding: 1rem 1rem;
 }
