@@ -11,6 +11,7 @@
             href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap"
             rel="stylesheet"
     />
+    <link rel="icon" href="assets/img/pomomanager_icon.png"/>
     <link rel="stylesheet" href="css/base/base.css"/>
     <link rel="stylesheet" href="css/components/cabecalho.css"/>
     <link rel="stylesheet" href="css/components/botao.css"/>
@@ -20,23 +21,22 @@
     <link rel="stylesheet" href="css/components/modal.css"/>
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <!--  Commented for development  --><?php
-    //    session_start();
-    //    if (!isset ($_SESSION["userID"])) {
-    //        header('Location: /login');
-    //    }
-    //
-    //    $userID = $_SESSION["userID"];
-    //    $userName = $_SESSION["userName"];
-    //    ?>
+    <?php
+    session_start();
+    if (!isset ($_SESSION["userID"])) {
+        header('Location: /login');
+    }
+
+    $userID = $_SESSION["userID"];
+    $userName = $_SESSION["userName"];
+    ?>
 </head>
 <body class="dashboard__body">
 <header class="dashboard__cabecalho container">
     <div class="user__cabecalho">
         <img src="https://dummyimage.com/80x80/000/fff" class="user__avatar" alt="Avatar do usuário"/>
         <div class="titulo user__cabecalho--info">
-            <!--            <h2>--><? //= $userName; ?><!--</h2>-->
-            <h2>teste</h2>
+            <h2><?= $userName; ?></h2>
             <h3>Lvl. 1</h3>
         </div>
     </div>
@@ -49,25 +49,22 @@
         <div class="tabela__tarefas">
             <input type="checkbox" value="">
             <p>Descrição</p>
-            <button class="botao__tabela--estilo alterar" id="open-edit" value=""
-                    onclick="abrirAlterar()">
+            <button class="botao__tabela--estilo alterar" id="abrir-alt" value="1">
                 <i data-feather="edit" aria-hidden="true"></i>
             </button>
-            <button class="botao__tabela--estilo deletar" id="open-delete" value=""
-                    onclick="abrirDeletar()">
+            <button class="botao__tabela--estilo deletar" id="abrir-dlt" value="1">
                 <i data-feather="trash-2" aria-hidden="true"></i>
             </button>
         </div>
 
-        <button class="botao botao--tarefa" id="open">Inserir tarefa</button>
+        <button class="botao botao--tarefa" id="abrir">Inserir tarefa</button>
     </div>
 
     <div class="card__container">
         <div class="card__central">
             <div class="glass-effect">
                 <h1 class="titulo">Tarefa atual</h1>
-                <p class="titulo--destaque">00:00</p>
-                <br>
+                <p class="titulo--destaque timer--tempo">00:00</p>
                 <p>Ciclos da atividade atual: 0</p>
                 <button class="botao--estilo botao__iniciar">Iniciar</button>
             </div>
@@ -81,40 +78,43 @@
     </div>
 </main>
 
-<!-- Modal Insert -->
+<!-- Modal Inserir -->
 <div class="modal-container" id="modal_container">
     <div class="modal">
         <form action="" method="POST">
+            <h1 class="titulo">Inserir tarefa</h1>
             <p>Digite a descrição da tarefa</p>
             <input class="input" name="descricao" type="text">
-            <button class="botao--estilo modal--confirma" type="submit">Inserir</button>
-            <button class="botao--estilo modal--cancela" id="close" type="reset">Cancelar</button>
+            <button class="botao botao--estilo modal--confirma" type="submit">Inserir</button>
+            <button class="botao botao--estilo modal--cancela" id="fechar" type="reset">Cancelar</button>
         </form>
     </div>
 </div>
 
-<!-- Modal Upate-->
-<div class="modal-container" id="modal_container_edit">
+<!-- Modal Alterar-->
+<div class="modal-container" id="modal_container_alt">
     <div class="modal">
         <form action="" method="POST">
+            <h1 class="titulo">Alterar tarefa</h1>
             <p>Digite a nova descrição da tarefa</p>
-            <input type="hidden" name="id" id="idEdit" value="">
+            <input type="hidden" name="id" id="idAlterar" value="">
             <p id="tarefaID"></p>
             <input class="input" name="descricao" type="text">
-            <button class="botao--estilo modal--confirma" type="submit">Alterar</button>
-            <button class="botao--estilo modal--cancela" id="close-edit" type="reset">Cancelar</button>
+            <button class="botao botao--estilo modal--confirma" type="submit">Alterar</button>
+            <button class="botao botao--estilo modal--cancela" id="fechar-alt" type="reset">Cancelar</button>
         </form>
     </div>
 </div>
 
-<!-- Modal Delete -->
-<div class="modal-container" id="modal_container_delete">
+<!-- Modal Deletar -->
+<div class="modal-container" id="modal_container_dlt">
     <div class="modal">
         <form action="" method="POST">
+            <h1 class="titulo">Excluir tarefa</h1>
             <p>Você realmente deseja deletar essa tarefa?</p>
-            <input type="hidden" name="id" id="idDelete" value="">
-            <button class="botao--estilo modal--confirma" type="submit">Sim</button>
-            <button class="botao--estilo modal--cancela" id="close-delete" type="reset">Cancelar</button>
+            <input type="hidden" name="id" id="idDeletar" value="">
+            <button class="botao botao--estilo modal--confirma" type="submit">Sim</button>
+            <button class="botao botao--estilo modal--cancela" id="fechar-dlt" type="reset">Cancelar</button>
         </form>
     </div>
 </div>

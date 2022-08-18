@@ -13,6 +13,7 @@
     border: none;
     box-shadow: 2px 2px 2px var(--preto);
     color: var(--branco);
+    margin: 0 10px;
 }
 
 .logout {
@@ -33,6 +34,7 @@
 }
 
 .botao--tarefa {
+    font: inherit;
     width: 200px;
     background: tomato;
     padding: 10px;
@@ -70,9 +72,17 @@
 }
 
 .botao__tabela--estilo.deletar {
-    background-color: red;
+    background-color: var(--vermelho);
 }
 
 .botao__tabela--estilo.alterar {
-    background-color: #f8b500;
+    background-color: var(--amarelo);
+}
+
+.modal--confirma {
+    background-color: var(--verde);
+}
+
+.modal--cancela {
+    background-color: var(--vermelho);
 }

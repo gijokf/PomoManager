@@ -11,6 +11,7 @@
             href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap"
             rel="stylesheet"
     />
+    <link rel="icon" href="assets/img/pomomanager_icon.png"/>
     <link rel="stylesheet" href="css/base/base.css"/>
     <link rel="stylesheet" href="css/components/cabecalho.css"/>
     <link rel="stylesheet" href="css/components/formulario.css"/>

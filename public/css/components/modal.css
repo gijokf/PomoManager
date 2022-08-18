@@ -23,19 +23,11 @@
 }
 
 .modal {
-    background-color: var(--secundaria);
+    background-color: var(--branco);
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 30px 50px;
     width: 40%;
     max-width: 100%;
     text-align: center;
-}
-
-.modal--confirma {
-   background-color: #2ca02c;
-}
-
-.modal--cancela {
-    background-color: #d62e2e;
 }

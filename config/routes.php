@@ -10,7 +10,8 @@ use PomoManager\Controller\User\userLogoutController;
 use PomoManager\Controller\User\userRegisterController;
 
 return [
-    '/login' => loginFormController::class,
+    '/' => loginFormController::class,
+//    '/login' => loginFormController::class,
     '/register' => registerFormController::class,
     '/register-user' => userRegisterController::class,
     '/dashboard' => dashboardController::class,

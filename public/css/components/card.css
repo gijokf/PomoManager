@@ -16,8 +16,12 @@
     flex-direction: column;
     margin: 0.5rem;
     border-radius: 8px;
-    background-color: var(--secudaria-escuro);
     width: 100%;
+}
+
+.timer--tempo {
+    font-size: 5rem;
+    margin-bottom: 12px;
 }
 
 .card__tarefas {
@@ -26,7 +30,6 @@
     flex-direction: column;
     margin: 0.5rem;
     border-radius: 8px;
-    background-color: var(--secudaria-escuro);
     width: 60%;
 }
 

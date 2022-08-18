@@ -11,6 +11,7 @@
             href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap"
             rel="stylesheet"
     />
+    <link rel="icon" href="assets/img/pomomanager_icon.png"/>
     <link rel="stylesheet" href="css/base/base.css"/>
     <link rel="stylesheet" href="css/components/cabecalho.css"/>
     <link rel="stylesheet" href="css/components/formulario.css"/>
@@ -23,8 +24,10 @@
 <body>
 <div class="container--centro">
     <header class="cabecalho container">
-        <img class="icone" src="assets/img/pomomanager_icon.png" alt="Ícone do PomoManager"/>
-        <h1 class="titulo--destaque logo">PomoManager</h1>
+        <h1 class="titulo--destaque logo">
+            <img class="icone" src="assets/img/pomomanager_icon.png" alt="Ícone do PomoManager"/>
+            PomoManager
+        </h1>
     </header>
 
     <main>
@@ -33,12 +36,11 @@
                 <h2 class="titulo titulo--secundario">Registre-se</h2>
                 <form action="/register-user" method="POST" id="formRegister">
                     <div class="input__avatar">
-                        <img class="input--image" id="avatarPrev" src="assets/img/default-profile.png"
-                             alt="avatar">
                         <input type="file" name="avatar"
                                onchange="document.getElementById('avatarPrev').src = window.URL.createObjectURL(this.files[0]);"
                                accept="image/png, image/jpeg">
-                        <label class="label" for="avatar">Avatar</label>
+                        <img class="input--image" id="avatarPrev" src="assets/img/default-profile.png"
+                             alt="avatar">
                     </div>
                     <label class="label" for="name">Nome</label>
                     <input type="text" id="name" name="name" placeholder="Nome" class="input"/>
@@ -70,7 +72,7 @@
                         <button type="submit" class="botao--estilo" id="buttonRegister">Confirmar</button>
                     </div>
                 </form>
-                <a href="/login" class="botao__link"><- Voltar</a>
+                <a href="/" class="botao__link"><- Voltar</a>
             </section>
         </div>
     </main>
