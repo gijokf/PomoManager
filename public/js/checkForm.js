@@ -1,5 +1,6 @@
-$(document).ready(function() {
-    $('#buttonRegister').click(function() {
+$(document).ready(function () {
+    //Form Registro
+    $('#buttonRegister').click(function () {
         const name = $('#name').val();
         const email = $('#email').val();
         const password = $('#password').val();
@@ -16,7 +17,8 @@ $(document).ready(function() {
         }
     })
 
-    $('#buttonLogin').click(function() {
+    //Form Login
+    $('#buttonLogin').click(function () {
         const email = $('#email').val();
         const password = $('#password').val();
 
@@ -25,7 +27,7 @@ $(document).ready(function() {
         if (email === '' || password === '') {
             alert('Há campos vazios!');
         } else {
-           $('#formLogin').get(0).submit();
+            $('#formLogin').get(0).submit();
         }
     })
 })

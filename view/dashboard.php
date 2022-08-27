@@ -24,7 +24,7 @@
     <?php
     session_start();
     if (!isset ($_SESSION["userID"])) {
-        header('Location: /login');
+        header('Location: /');
     }
 
     $userID = $_SESSION["userID"];
@@ -81,10 +81,16 @@
 <!-- Modal Inserir -->
 <div class="modal-container" id="modal_container">
     <div class="modal">
-        <form action="" method="POST">
+        <form action="/add-task" method="POST">
             <h1 class="titulo">Inserir tarefa</h1>
             <p>Digite a descrição da tarefa</p>
             <input class="input" name="descricao" type="text">
+            <label for="tier">Selecione a dificuldade da tarefa:</label>
+            <select class="input" id="tier" name="tier">
+                <option value="Fácil">Fácil</option>
+                <option value="Médio">Médio</option>
+                <option value="Difícil">Difícil</option>
+            </select>
             <button class="botao botao--estilo modal--confirma" type="submit">Inserir</button>
             <button class="botao botao--estilo modal--cancela" id="fechar" type="reset">Cancelar</button>
         </form>
@@ -95,10 +101,15 @@
 <div class="modal-container" id="modal_container_alt">
     <div class="modal">
         <form action="" method="POST">
+            <input type="hidden" name="id" id="idAlterar" value="">
             <h1 class="titulo">Alterar tarefa</h1>
             <p>Digite a nova descrição da tarefa</p>
-            <input type="hidden" name="id" id="idAlterar" value="">
-            <p id="tarefaID"></p>
+            <label for="tier">Selecione a dificuldade da tarefa:</label>
+            <select class="input" id="tier" name="tier">
+                <option value="Fácil">Fácil</option>
+                <option value="Médio">Médio</option>
+                <option value="Difícil">Difícil</option>
+            </select>
             <input class="input" name="descricao" type="text">
             <button class="botao botao--estilo modal--confirma" type="submit">Alterar</button>
             <button class="botao botao--estilo modal--cancela" id="fechar-alt" type="reset">Cancelar</button>
