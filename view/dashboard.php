@@ -45,20 +45,28 @@
     </a>
 </header>
 <main class="card__grid-container container">
-    <div class="card__container">
-        <div class="tabela__tarefas">
-            <input type="checkbox" value="">
-            <p>Descrição</p>
-            <button class="botao__tabela--estilo alterar" id="abrir-alt" value="1">
-                <i data-feather="edit" aria-hidden="true"></i>
-            </button>
-            <button class="botao__tabela--estilo deletar" id="abrir-dlt" value="1">
-                <i data-feather="trash-2" aria-hidden="true"></i>
-            </button>
-        </div>
+    <?php
+    require_once('../src/Controller/Task/taskListController.php');
 
-        <button class="botao botao--tarefa" id="abrir">Inserir tarefa</button>
-    </div>
+    foreach ($tasks as $task) {
+        ?>
+        <div class="card__container">
+            <div class="tabela__tarefas">
+                <input type="checkbox" value="">
+                <p><?= $task["taskDescription"] ?></p>
+                <button class="botao__tabela--estilo alterar" id="abrir-alt" value="<?= $task["taskID"] ?>">
+                    <i data-feather="edit" aria-hidden="true"></i>
+                </button>
+                <button class="botao__tabela--estilo deletar" id="abrir-dlt" value="<?= $task["taskID"] ?>">
+                    <i data-feather="trash-2" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <button class="botao botao--tarefa" id="abrir">Inserir tarefa</button>
+        </div>
+        <?php
+    }
+    ?>
 
     <div class="card__container">
         <div class="card__central">

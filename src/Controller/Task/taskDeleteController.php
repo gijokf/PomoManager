@@ -3,8 +3,10 @@
 namespace PomoManager\Controller\Task;
 
 use PDO;
+use PomoManager\Controller\controllersInterface;
+use PomoManager\Entity\Task;
 
-class taskDeleteController extends \PomoManager\Entity\Task implements \PomoManager\Controller\controllersInterface
+class taskDeleteController extends Task implements controllersInterface
 {
     public function __construct()
     {
