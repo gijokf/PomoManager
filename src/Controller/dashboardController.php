@@ -2,10 +2,9 @@
 
 namespace PomoManager\Controller;
 
-use PomoConfig\connection\Connect;
 use PomoManager\Helper\RenderHtmlTrait;
 
-class dashboardController extends Connect implements controllersInterface
+class dashboardController implements controllersInterface
 {
     use RenderHtmlTrait;
 

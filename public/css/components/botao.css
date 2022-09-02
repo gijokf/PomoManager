@@ -24,7 +24,7 @@
     height: 25%;
 }
 
-.botao:hover {
+.botao--estilo:hover {
     cursor: pointer;
 }
 

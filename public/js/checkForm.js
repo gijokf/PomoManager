@@ -7,6 +7,7 @@ $(document).ready(function () {
         const checkPassword = $('#checkPassword').val();
 
         if (name === '' || email === '' || password === '' || checkPassword === '') {
+            $('#buttonRegister').prop("disabled", true);
             alert('Há campos vazios!.');
         } else {
             if (password !== checkPassword) {
@@ -15,6 +16,7 @@ $(document).ready(function () {
                 $('#formRegister').get(0).submit();
             }
         }
+
     })
 
     //Form Login
@@ -22,9 +24,8 @@ $(document).ready(function () {
         const email = $('#email').val();
         const password = $('#password').val();
 
-        console.log(email, password);
-
         if (email === '' || password === '') {
+            $('#buttonRegister').disable();
             alert('Há campos vazios!');
         } else {
             $('#formLogin').get(0).submit();

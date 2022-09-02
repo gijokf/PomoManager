@@ -10,7 +10,7 @@ class User extends Connect
     private int $userID;
     private string $userName;
     private string $userPassword;
-    private $userAvatar;
+    private string $userAvatar;
     private int $userExp;
 
     function __construct()

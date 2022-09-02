@@ -17,5 +17,5 @@ return [
     '/dashboard' => dashboardController::class,
     '/realize-login' => userLoginController::class,
     '/logout' => userLogoutController::class,
-    '/add-task' => taskAddController::class
+    '/add-task' => taskAddController::class,
 ];

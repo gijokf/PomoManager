@@ -48,6 +48,9 @@
     <?php
     require_once('../src/Controller/Task/taskListController.php');
 
+    use PomoManager\Controller\Task\taskListController;
+
+    taskListController::processaRequisicao();
     foreach ($tasks as $task) {
         ?>
         <div class="card__container">

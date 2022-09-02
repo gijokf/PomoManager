@@ -8,6 +8,8 @@ use PomoManager\Entity\Task;
 
 class taskListController extends Task implements controllersInterface
 {
+    protected $connection;
+
     public function __construct()
     {
         parent::__construct();
@@ -15,8 +17,6 @@ class taskListController extends Task implements controllersInterface
 
     public function processaRequisicao(): void
     {
-        session_start();
-
         $userID = $_SESSION['userID'];
         $sqlQuery = $this->connection->prepare('SELECT taskID, taskDescription from tasks where userID = ?');
         $sqlQuery->bindParam(1, $userID, PDO::PARAM_INT);
