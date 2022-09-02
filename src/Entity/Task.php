@@ -2,7 +2,7 @@
 
 namespace PomoManager\Entity;
 
-use PomoConfig\connection\Connect;
+use PomoConfig\Connection\Connect;
 
 class Task extends Connect
 {
