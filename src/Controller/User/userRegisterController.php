@@ -41,7 +41,7 @@ class userRegisterController extends User implements controllersInterface
             //        $sqlQuery->bindParam(4, $userAvatar, PDO::PARAM_LOB);
             $sqlQuery->execute();
 
-            header('Location: /login');
+            header('Location: /');
         }
     }
 }

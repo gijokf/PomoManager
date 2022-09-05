@@ -19,7 +19,7 @@ class userLoginController extends User implements controllersInterface
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $userEmail = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
-            $userPassword = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
+            $userPassword = filter_input(INPUT_POST, "password", FILTER_DEFAULT);
 
             session_start();
 
@@ -48,7 +48,7 @@ class userLoginController extends User implements controllersInterface
                 } else {
                     session_unset();
                     session_destroy();
-                    header('Location: /login');
+                    header('Location: /');
                 }
             } catch (PDOException $erro) {
                 echo $erro->getMessage();

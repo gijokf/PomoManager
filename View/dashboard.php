@@ -45,15 +45,18 @@
     </a>
 </header>
 <main class="card__grid-container container">
-    <?php
-    require_once('../src/Controller/Task/taskListController.php');
-
-    use PomoManager\Controller\Task\taskListController;
-
-    taskListController::processaRequisicao();
-    foreach ($tasks as $task) {
-        ?>
         <div class="card__container">
+            <?php
+            require_once('../src/Controller/Task/taskListController.php');
+
+            use PomoManager\Controller\Task\taskListController;
+            $tasks = [];
+            $taskListController = new taskListController();
+            $taskListController->processaRequisicao();
+
+            foreach ($tasks as $task)
+            {
+            ?>
             <div class="tabela__tarefas">
                 <input type="checkbox" value="">
                 <p><?= $task["taskDescription"] ?></p>
@@ -64,12 +67,13 @@
                     <i data-feather="trash-2" aria-hidden="true"></i>
                 </button>
             </div>
+                <?php
+            }
+            ?>
 
             <button class="botao botao--tarefa" id="abrir">Inserir tarefa</button>
         </div>
-        <?php
-    }
-    ?>
+
 
     <div class="card__container">
         <div class="card__central">

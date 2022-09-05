@@ -1,6 +1,6 @@
 <?php
 
-namespace PomoConfig\Connection;
+namespace PomoConfig\connection;
 
 use PDO;
 use PDOException;

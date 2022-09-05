@@ -1,34 +1,50 @@
-$(document).ready(function () {
-    //Form Registro
-    $('#buttonRegister').click(function () {
-        const name = $('#name').val();
-        const email = $('#email').val();
-        const password = $('#password').val();
-        const checkPassword = $('#checkPassword').val();
+// $(document).ready(function () {
+//     //Form Registro
+//     $('#buttonRegister').click(function () {
+//         const name = $('#name').val();
+//         const email = $('#email').val();
+//         const password = $('#password').val();
+//         const checkPassword = $('#checkPassword').val();
+//
+//         if (name === '' || email === '' || password === '' || checkPassword === '') {
+//             $('#buttonRegister').prop("disabled", true);
+//             alert('Há campos vazios!.');
+//         } else {
+//             if (password !== checkPassword) {
+//                 alert('As senhas não conferem.');
+//             } else {
+//                 $('#formRegister').get(0).submit();
+//             }
+//         }
+//
+//     })
+//
+//     //Form Login
+//     $('#buttonLogin').click(function () {
+//         const email = $('#email').val();
+//         const password = $('#password').val();
+//
+//         if (email === '' || password === '') {
+//             alert('Há campos vazios!');
+//         } else {
+//             $('#formLogin').get(0).submit();
+//         }
+//     })
+// })
+$(document).ready(function() {
+    $('.input').on('keyup', (function() {
 
-        if (name === '' || email === '' || password === '' || checkPassword === '') {
-            $('#buttonRegister').prop("disabled", true);
-            alert('Há campos vazios!.');
-        } else {
-            if (password !== checkPassword) {
-                alert('As senhas não conferem.');
-            } else {
-                $('#formRegister').get(0).submit();
+        let empty = false;
+        $('.input').each(function() {
+            if ($(this).val().length === 0) {
+                empty = true;
             }
-        }
+        });
 
-    })
-
-    //Form Login
-    $('#buttonLogin').click(function () {
-        const email = $('#email').val();
-        const password = $('#password').val();
-
-        if (email === '' || password === '') {
-            $('#buttonRegister').disable();
-            alert('Há campos vazios!');
+        if (empty) {
+            $('.botao--estilo').attr('disabled', 'disabled');
         } else {
-            $('#formLogin').get(0).submit();
+            $('.botao--estilo').attr('disabled', false);
         }
-    })
-})
+    }));
+});

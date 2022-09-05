@@ -51,7 +51,7 @@
                             class="input"
                     />
                     <div class="botao">
-                        <button type="submit" class="botao--estilo" id="buttonLogin">Entrar</button>
+                        <button type="submit" class="botao--estilo" id="buttonLogin" disabled="disabled">Entrar</button>
                     </div>
                 </form>
                 <a href="/register" class="botao__link">Não possui uma conta? Registre-se agora!</a>

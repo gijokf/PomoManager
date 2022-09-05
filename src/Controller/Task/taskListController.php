@@ -8,7 +8,7 @@ use PomoManager\Entity\Task;
 
 class taskListController extends Task implements controllersInterface
 {
-    protected $connection;
+    public $connection;
 
     public function __construct()
     {

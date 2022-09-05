@@ -8,7 +8,7 @@ trait RenderHtmlTrait
     {
 //        extract($dados);
         ob_start();
-        require __DIR__ . '/../../view/' . $caminhoTemplate;
+        require __DIR__ . '/../../View/' . $caminhoTemplate;
         $html = ob_get_clean();
 
         return $html;

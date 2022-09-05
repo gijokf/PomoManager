@@ -69,7 +69,7 @@
                             class="input"
                     />
                     <div class="botao">
-                        <button type="submit" class="botao--estilo" id="buttonRegister">Confirmar</button>
+                        <button type="submit" class="botao--estilo" id="buttonRegister" disabled="disabled">Confirmar</button>
                     </div>
                 </form>
                 <a href="/" class="botao__link"><- Voltar</a>
