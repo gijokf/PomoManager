@@ -1,0 +1,17 @@
+.notificacao--estilo {
+    padding: 5px;
+    border-radius: 8px;
+    width: 420px;
+    height: 45px;
+    margin: 8px;
+    display: flex;
+    align-items: center
+}
+
+/*.notificacao--estilo ~ {*/
+/*    margin: 0 10px;*/
+/*}*/
+
+.erro {
+    background: tomato;
+}

@@ -42,13 +42,18 @@ class userLoginController extends User implements controllersInterface
                     } else {
                         session_unset();
                         session_destroy();
-                        echo "E-mail ou senha inválidos";
+                        header('Location: /');
+                        session_start();
+                        $_SESSION['msg'] = '<p class="notificacao--estilo erro"><i data-feather="alert-triangle" aria-hidden="true"></i>E-mail ou senha inválidos.</p>';
                         return;
                     }
                 } else {
                     session_unset();
                     session_destroy();
                     header('Location: /');
+                    session_start();
+                    $_SESSION['msg'] = '<p class="notificacao--estilo erro"><i data-feather="alert-triangle" aria-hidden="true"></i>E-mail ou senha inválidos.</p>';
+                    return;
                 }
             } catch (PDOException $erro) {
                 echo $erro->getMessage();

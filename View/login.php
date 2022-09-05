@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="css/components/label.css"/>
     <link rel="stylesheet" href="css/components/input.css"/>
     <link rel="stylesheet" href="css/components/botao.css"/>
+    <link rel="stylesheet" href="css/components/notificacao.css"/>
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
 <div class="container--centro">
@@ -27,7 +29,13 @@
             PomoManager
         </h1>
     </header>
-
+    <?php
+    session_start();
+    if (isset($_SESSION['msg'])):
+        echo $_SESSION['msg'];
+    endif;
+    session_unset();
+    ?>
     <main>
         <div class="formulario">
             <section class="formulario--tamanho container">
@@ -51,7 +59,8 @@
                             class="input"
                     />
                     <div class="botao">
-                        <button type="submit" class="botao--estilo" id="buttonLogin" disabled="disabled">Entrar</button>
+                        <button type="submit" class="botao--estilo" id="buttonLogin" disabled="disabled">Entrar
+                        </button>
                     </div>
                 </form>
                 <a href="/register" class="botao__link">Não possui uma conta? Registre-se agora!</a>
@@ -59,7 +68,7 @@
         </div>
     </main>
 </div>
-
+<script>feather.replace()</script>
 <script src="js/jQuery/jquery-3.6.0.js"></script>
 <script src="js/checkForm.js"></script>
 </body>

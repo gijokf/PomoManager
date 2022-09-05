@@ -6,7 +6,7 @@ use PomoConfig\Connection\Connect;
 
 class Task extends Connect
 {
-    private $table;
+    private string $table;
     private int $taskID;
     private string $userID;
     private string $taskDescription;
