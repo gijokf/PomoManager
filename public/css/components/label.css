@@ -4,7 +4,8 @@
     width: 1px;
     padding: 0;
     margin: -1px;
-    overflow: hidden;
+    display: none;
+    /*overflow: hidden;*/
     text-decoration: transparent;
     white-space: nowrap;
     border-width: 0;

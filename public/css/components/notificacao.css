@@ -8,10 +8,14 @@
     align-items: center
 }
 
-/*.notificacao--estilo ~ {*/
-/*    margin: 0 10px;*/
-/*}*/
+.notificacao--estilo > svg {
+    margin: 0 10px;
+}
 
 .erro {
-    background: tomato;
+    background: #ff4646;
+}
+
+.sucesso {
+    background: #0c9800;
 }

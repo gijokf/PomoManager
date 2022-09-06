@@ -44,7 +44,9 @@ class userLoginController extends User implements controllersInterface
                         session_destroy();
                         header('Location: /');
                         session_start();
-                        $_SESSION['msg'] = '<p class="notificacao--estilo erro"><i data-feather="alert-triangle" aria-hidden="true"></i>E-mail ou senha inválidos.</p>';
+                        $_SESSION['msg'] = '<p class="notificacao--estilo erro">
+                                            <i data-feather="alert-triangle" aria-hidden="true"></i>
+                                            E-mail ou senha inválidos.</p>';
                         return;
                     }
                 } else {
@@ -52,11 +54,14 @@ class userLoginController extends User implements controllersInterface
                     session_destroy();
                     header('Location: /');
                     session_start();
-                    $_SESSION['msg'] = '<p class="notificacao--estilo erro"><i data-feather="alert-triangle" aria-hidden="true"></i>E-mail ou senha inválidos.</p>';
+                    $_SESSION['msg'] = '<p class="notificacao--estilo erro">
+                                        <i data-feather="alert-triangle" aria-hidden="true"></i>
+                                        E-mail ou senha inválidos.</p>';
                     return;
                 }
-            } catch (PDOException $erro) {
-                echo $erro->getMessage();
+            } catch (PDOException $e) {
+                echo "Erro:" . $e->getMessage();
+                die();
             }
         }
     }

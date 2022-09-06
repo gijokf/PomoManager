@@ -18,8 +18,10 @@
     <link rel="stylesheet" href="css/components/label.css"/>
     <link rel="stylesheet" href="css/components/input.css"/>
     <link rel="stylesheet" href="css/components/botao.css"/>
+    <link rel="stylesheet" href="css/components/notificacao.css"/>
 
     <link rel="script" href="js/checkForm.js"/>
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
 <div class="container--centro">
@@ -31,16 +33,25 @@
     </header>
 
     <main>
+        <?php
+        session_start();
+        if (isset($_SESSION['msg'])):
+            echo $_SESSION['msg'];
+        endif;
+        session_unset();
+        ?>
         <div class="formulario">
             <section class="formulario--tamanho container">
                 <h2 class="titulo titulo--secundario">Registre-se</h2>
-                <form action="/register-user" method="POST" id="formRegister">
+                <form action="/register-user" method="POST" id="formRegister" enctype="multipart/form-data">
                     <div class="input__avatar">
-                        <input type="file" name="avatar"
+                        <label for="avatar">
+                            <img class="input--image" id="avatarPrev" src="assets/img/default-profile.png"
+                                 alt="Avatar Preview">
+                        </label>
+                        <input id="avatar" type="file" name="avatar"
                                onchange="document.getElementById('avatarPrev').src = window.URL.createObjectURL(this.files[0]);"
                                accept="image/png, image/jpeg">
-                        <img class="input--image" id="avatarPrev" src="assets/img/default-profile.png"
-                             alt="avatar">
                     </div>
                     <label class="label" for="name">Nome</label>
                     <input type="text" id="name" name="name" placeholder="Nome" class="input"/>
@@ -68,8 +79,13 @@
                             placeholder="Confirme sua senha"
                             class="input"
                     />
+                    <ul class="formulario--senha">
+                        <li id="pass6chars">A senha possui no mínimo 6 caracteres.</li>
+                        <li id="checked">A senha está confirmada.</li>
+                    </ul>
                     <div class="botao">
-                        <button type="submit" class="botao--estilo" id="buttonRegister" disabled="disabled">Confirmar</button>
+                        <button type="submit" class="botao--estilo" id="buttonRegister" disabled="disabled">Confirmar
+                        </button>
                     </div>
                 </form>
                 <a href="/" class="botao__link"><- Voltar</a>
@@ -80,5 +96,6 @@
 
 <script src="js/jQuery/jquery-3.6.0.js"></script>
 <script src="js/checkForm.js"></script>
+<script>feather.replace()</script>
 </body>
 </html>

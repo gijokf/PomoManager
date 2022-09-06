@@ -8,8 +8,7 @@
     padding: 1rem;
 
     box-sizing: border-box;
-    margin-bottom: 1.375rem;
-
+    margin-bottom: 1.2rem;
     border-radius: 8px;
 }
 
@@ -25,9 +24,17 @@
     margin-bottom: 16px;
 }
 
+.input__avatar input {
+    display: none;
+}
+
 .input--image {
     border-radius: 50%;
     width: 80px;
     height: 80px;
     margin-right: 16px;
+}
+
+.input--image:hover {
+    cursor: pointer;
 }

@@ -8,6 +8,16 @@
     flex-direction: column;
 }
 
+.formulario--senha {
+    font-size: var(--tamanho-pequeno);
+    color: var(--cinza);
+    margin-bottom: 5px
+}
+
+ul li:before {
+    content: '✓';
+}
+
 @media screen and (min-width: 768px) {
     .titulo--destaque {
         font-size: 2.25rem;
