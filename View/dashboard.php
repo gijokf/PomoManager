@@ -44,52 +44,88 @@
     <a class="botao botao--estilo logout" href="/logout"><i data-feather="log-out" aria-hidden="true"></i>Sair
     </a>
 </header>
-<main class="card__grid-container container">
-    <?php
-    require_once('../src/Controller/Task/taskListController.php');
+<main class="card__main">
+    <div class="card__grid-container container">
 
-    use PomoManager\Controller\Task\taskListController;
-
-    $tasks = [];
-    $taskListController = new taskListController();
-    $taskListController->processaRequisicao();
-    foreach ($tasks as $task) {
-        ?>
+        <!-- Tarefas -->
         <div class="card__container">
-            <div class="tabela__tarefas">
-                <input type="checkbox" value="">
-                <p><?= $task["taskDescription"] ?></p>
-                <button class="botao__tabela--estilo alterar" id="abrir-alt" value="<?= $task["taskID"] ?>">
-                    <i data-feather="edit" aria-hidden="true"></i>
-                </button>
-                <button class="botao__tabela--estilo deletar" id="abrir-dlt" value="<?= $task["taskID"] ?>">
-                    <i data-feather="trash-2" aria-hidden="true"></i>
-                </button>
-            </div>
+            <h1 class="titulo--destaque">Tarefas</h1>
+            <?php
+            require_once('../src/Controller/Task/taskListController.php');
+
+            use PomoManager\Controller\Task\taskListController;
+
+            $tasks = [];
+            $taskListController = new taskListController();
+            $taskListController->processaRequisicao();
+            $tasks = $taskListController->tasks;
+            foreach ($tasks as $task): ?>
+                <div class="tabela__tarefas">
+                    <div class="tabela--detalhes">
+                        <input type="checkbox" value="<?= $task["taskID"]; ?>">
+                        <p><?= $task["taskDescription"]; ?></p>
+                    </div>
+
+                    <div class="tabela--botoes">
+                        <button class="botao__tabela--estilo alterar" id="abrir-alt" value="<?= $task["taskID"]; ?>">
+                            <i data-feather="edit" aria-hidden="true"></i>
+                        </button>
+                        <button class="botao__tabela--estilo deletar" id="abrir-dlt" value="<?= $task["taskID"]; ?>">
+                            <i data-feather="trash-2" aria-hidden="true"></i>
+                        </button>
+                        <button class="botao__tabela--estilo concluir" id="" value="<?= $task["taskID"]; ?>">
+                            <i data-feather="check-square" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            <?php endforeach; ?>
 
             <button class="botao botao--tarefa" id="abrir">Inserir tarefa</button>
         </div>
-        <?php
-    }
-    ?>
 
-    <div class="card__container">
-        <div class="card__central">
-            <div class="glass-effect">
-                <h1 class="titulo">Tarefa atual</h1>
-                <p class="titulo--destaque timer--tempo">00:00</p>
-                <p>Ciclos da atividade atual: 0</p>
-                <button class="botao--estilo botao__iniciar">Iniciar</button>
+        <!-- Timer -->
+        <div class="card__container">
+            <div class="card__central">
+                <div class="glass-effect">
+                    <h1 class="titulo" id="taskDescricao">Tarefa atual</h1>
+                    <p class="titulo--destaque timer--tempo" id="timer"></p>
+                    <button class="botao botao--estilo botao__iniciar" id="botao_timer">Iniciar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarefas completas -->
+        <div class="card__container">
+            <h1 class="titulo--destaque">Completas</h1>
+            <div class="tabela__tarefas">
+                <div class="tabela--detalhes">
+                    <input type="checkbox" value="">
+                    <p>teste</p>
+                </div>
+                <div class="tabela--botoes">
+                    <button class="botao__tabela--estilo alterar" id="abrir-alt" value="">
+                        <i data-feather="edit" aria-hidden="true"></i>
+                    </button>
+                    <button class="botao__tabela--estilo deletar" id="abrir-dlt" value="">
+                        <i data-feather="trash-2" aria-hidden="true"></i>
+                    </button>
+                    <button class="botao__tabela--estilo concluir" id="" value="">
+                        <i data-feather="check-square" aria-hidden="true"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="card__container">
-        <div class="container card__tarefas">
-            <h1 class="titulo">Buttons</h1>
-        </div>
+    <div class="card__botoes">
+
+        <button class="botao botao--estilo" id="pomodoro">Pomodoro</button>
+        <button class="botao botao--estilo" id="descansoCurto">Descanso Curto</button>
+        <button class="botao botao--estilo" id="descansoLongo">Descanso Longo</button>
+
     </div>
 </main>
+
 
 <!-- Modal Inserir -->
 <div class="modal-container" id="modal_container">
@@ -133,10 +169,10 @@
 <!-- Modal Deletar -->
 <div class="modal-container" id="modal_container_dlt">
     <div class="modal">
-        <form action="" method="POST">
+        <form action="/delete-task?<?= $task['taskID'] ?>" method="POST">
             <h1 class="titulo">Excluir tarefa</h1>
             <p>Você realmente deseja deletar essa tarefa?</p>
-            <input type="hidden" name="id" id="idDeletar" value="">
+            <input type="hidden" name="id" id="idDeletar" value="<?= $task["taskID"]; ?>">
             <button class="botao botao--estilo modal--confirma" type="submit">Sim</button>
             <button class="botao botao--estilo modal--cancela" id="fechar-dlt" type="reset">Cancelar</button>
         </form>
@@ -145,8 +181,8 @@
 
 <!--Ícones-->
 <script>feather.replace()</script>
-
 <script src="js/jQuery/jquery-3.6.0.js"></script>
 <script src="js/modal.js"></script>
+<script src="js/timer.js"></script>
 </body>
 </html>

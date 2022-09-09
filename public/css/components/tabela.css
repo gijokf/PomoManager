@@ -1,7 +1,7 @@
 .tabela__tarefas {
-    width: 200px;
+    width: 300px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background: tomato;
     padding: 8px;
     margin: 8px 0;
@@ -11,4 +11,20 @@
 
 .tabela__tarefas td:nth-child(2) {
     display: none;
+}
+
+.tabela__tarefas input {
+    margin-right: 8px
+}
+
+.tabela--detalhes {
+    display: flex;
+    align-items: center;
+}
+
+.tabela--botoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 40%;
 }

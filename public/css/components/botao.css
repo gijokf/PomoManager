@@ -24,13 +24,15 @@
     height: 25%;
 }
 
-.botao--estilo:hover {
+.botao:hover {
     cursor: pointer;
 }
 
 .botao__link {
+    display: flex;
     margin-top: 1.3rem;
     color: var(--branco);
+    align-items: center;
 }
 
 .botao--tarefa {
@@ -55,7 +57,7 @@
 .botao__parar {
     transform: translateY(6px);
     background-color: #db332d;
-    box-shadow: #094c66 0px 0px 0px;
+    box-shadow: #0a5b12 0px 0px 0px;
 }
 
 /*Botões da tabela*/
@@ -65,7 +67,6 @@
     cursor: pointer;
     height: 30px;
     width: 30px;
-    padding-left: 8px;
     align-items: center;
     display: flex;
     border-radius: 5px;
@@ -77,6 +78,10 @@
 
 .botao__tabela--estilo.alterar {
     background-color: var(--amarelo);
+}
+
+.botao__tabela--estilo.concluir {
+    background-color: var(--verde);
 }
 
 .modal--confirma {

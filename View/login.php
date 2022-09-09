@@ -59,7 +59,7 @@
                             class="input"
                     />
                     <div class="botao">
-                        <button type="submit" class="botao--estilo" id="buttonLogin" disabled="disabled">Entrar
+                        <button type="submit" class="botao botao--estilo" id="buttonLogin" disabled="disabled">Entrar
                         </button>
                     </div>
                 </form>

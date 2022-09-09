@@ -84,11 +84,12 @@
                         <li id="checked">A senha está confirmada.</li>
                     </ul>
                     <div class="botao">
-                        <button type="submit" class="botao--estilo" id="buttonRegister" disabled="disabled">Confirmar
+                        <button type="submit" class="botao botao--estilo" id="buttonRegister" disabled="disabled">
+                            Confirmar
                         </button>
                     </div>
                 </form>
-                <a href="/" class="botao__link"><- Voltar</a>
+                <a href="/" class="botao__link"><i data-feather="arrow-left" aria-hidden="true"></i> Voltar</a>
             </section>
         </div>
     </main>

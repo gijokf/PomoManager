@@ -9,6 +9,7 @@ use PomoManager\Entity\Task;
 class taskListController extends Task implements controllersInterface
 {
     public $connection;
+    public $tasks;
 
     public function __construct()
     {
@@ -22,6 +23,7 @@ class taskListController extends Task implements controllersInterface
         $sqlQuery->bindParam(1, $userID, PDO::PARAM_INT);
         $sqlQuery->execute();
 
-        $tasks = $sqlQuery->fetch(PDO::FETCH_ASSOC);
+        $this->tasks = $sqlQuery->fetchAll(PDO::FETCH_ASSOC);
+
     }
 }

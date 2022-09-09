@@ -11,7 +11,7 @@
 .formulario--senha {
     font-size: var(--tamanho-pequeno);
     color: var(--cinza);
-    margin-bottom: 5px
+    margin-bottom: 1.2rem
 }
 
 ul li:before {
