@@ -31,7 +31,7 @@
     $userName = $_SESSION["userName"];
     ?>
 </head>
-<body class="dashboard__body">
+<body>
 <header class="dashboard__cabecalho container">
     <div class="user__cabecalho">
         <img src="https://dummyimage.com/80x80/000/fff" class="user__avatar" alt="Avatar do usuário"/>
@@ -48,7 +48,7 @@
     <div class="card__grid-container container">
 
         <!-- Tarefas -->
-        <div class="card__container">
+        <div class="side__container">
             <h1 class="titulo--destaque">Tarefas</h1>
             <?php
             require_once('../src/Controller/Task/taskListController.php');
@@ -84,18 +84,20 @@
         </div>
 
         <!-- Timer -->
-        <div class="card__container">
+        <div class="center__container">
             <div class="card__central">
-                <div class="glass-effect">
-                    <h1 class="titulo" id="taskDescricao">Tarefa atual</h1>
-                    <p class="titulo--destaque timer--tempo" id="timer"></p>
-                    <button class="botao botao--estilo botao__iniciar" id="botao_timer">Iniciar</button>
+                <div class="timer_conteudo">
+                    <div class="centralizado">
+                        <h1 class="titulo" id="taskDescricao">Tarefa atual</h1>
+                        <p class="titulo--destaque timer--tempo" id="timer"></p>
+                        <button class="botao botao--estilo botao__iniciar" id="botao_timer">Iniciar</button>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Tarefas completas -->
-        <div class="card__container">
+        <div class="side__container">
             <h1 class="titulo--destaque">Completas</h1>
             <div class="tabela__tarefas">
                 <div class="tabela--detalhes">
