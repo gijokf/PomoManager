@@ -73,7 +73,7 @@
                         <button class="botao__tabela--estilo deletar" id="abrir-dlt" value="<?= $task["taskID"]; ?>">
                             <i data-feather="trash-2" aria-hidden="true"></i>
                         </button>
-                        <button class="botao__tabela--estilo concluir" id="" value="<?= $task["taskID"]; ?>">
+                        <button class="botao__tabela--estilo concluir" id="abrir-clr" value="<?= $task["taskID"]; ?>">
                             <i data-feather="check-square" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -87,11 +87,9 @@
         <div class="center__container">
             <div class="card__central">
                 <div class="timer_conteudo">
-                    <div class="centralizado">
-                        <h1 class="titulo" id="taskDescricao">Tarefa atual</h1>
-                        <p class="titulo--destaque timer--tempo" id="timer"></p>
-                        <button class="botao botao--estilo botao__iniciar" id="botao_timer">Iniciar</button>
-                    </div>
+                    <h1 class="titulo" id="taskDescricao">Tarefa atual</h1>
+                    <p class="titulo--destaque timer--tempo" id="timer"></p>
+                    <button class="botao botao--estilo botao__iniciar" id="botao_timer">Iniciar</button>
                 </div>
             </div>
         </div>
@@ -111,7 +109,7 @@
                     <button class="botao__tabela--estilo deletar" id="abrir-dlt" value="">
                         <i data-feather="trash-2" aria-hidden="true"></i>
                     </button>
-                    <button class="botao__tabela--estilo concluir" id="" value="">
+                    <button class="botao__tabela--estilo concluir" id="abrir-clr" value="">
                         <i data-feather="check-square" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -155,13 +153,13 @@
             <input type="hidden" name="id" id="idAlterar" value="">
             <h1 class="titulo">Alterar tarefa</h1>
             <p>Digite a nova descrição da tarefa</p>
+            <input class="input" name="descricao" type="text">
             <label for="tier">Selecione a dificuldade da tarefa:</label>
             <select class="input" id="tier" name="tier">
                 <option value="Fácil">Fácil</option>
                 <option value="Médio">Médio</option>
                 <option value="Difícil">Difícil</option>
             </select>
-            <input class="input" name="descricao" type="text">
             <button class="botao botao--estilo modal--confirma" type="submit">Alterar</button>
             <button class="botao botao--estilo modal--cancela" id="fechar-alt" type="reset">Cancelar</button>
         </form>
@@ -177,6 +175,19 @@
             <input type="hidden" name="id" id="idDeletar" value="<?= $task["taskID"]; ?>">
             <button class="botao botao--estilo modal--confirma" type="submit">Sim</button>
             <button class="botao botao--estilo modal--cancela" id="fechar-dlt" type="reset">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Concluir -->
+<div class="modal-container" id="modal_container_clr">
+    <div class="modal">
+        <form action="" method="POST">
+            <h1 class="titulo">Concluir tarefa</h1>
+            <p>Confirme a conclusão da tarefa para ganhar EXP!</p>
+            <input type="hidden" name="id" id="idConcluir" value="<?= $task["taskID"]; ?>">
+            <button class="botao botao--estilo modal--confirma" type="submit">Concluir!</button>
+            <button class="botao botao--estilo modal--cancela" id="fechar-clr" type="reset">Cancelar</button>
         </form>
     </div>
 </div>

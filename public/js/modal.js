@@ -38,4 +38,18 @@ $(function () {
     fechar_dlt.on('click', function () {
         $('#modal_container_dlt').removeClass('show');
     });
+
+    //Modal Concluir
+    const abrir_clr = $('#abrir-clr');
+    const fechar_clr = $('#fechar-clr');
+    let idConcluir = abrir_dlt.val();
+
+    abrir_clr.on('click', function () {
+        $('#modal_container_clr').addClass('show');
+        $('#idConcluir').val(idConcluir)
+    });
+
+    fechar_clr.on('click', function () {
+        $('#modal_container_clr').removeClass('show');
+    });
 });
