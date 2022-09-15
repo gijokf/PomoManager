@@ -149,16 +149,16 @@
 <!-- Modal Alterar-->
 <div class="modal-container" id="modal_container_alt">
     <div class="modal">
-        <form action="" method="POST">
-            <input type="hidden" name="id" id="idAlterar">
+        <form action="/update-task" method="POST">
+            <input type="text" name="id" id="idAlterar">
             <h1 class="titulo">Alterar tarefa</h1>
             <p>Digite a nova descrição da tarefa</p>
             <input class="input" name="descricao" type="text">
             <label for="tier">Selecione a dificuldade da tarefa:</label>
             <select class="input" id="tier" name="tier">
-                <option value="Fácil">Fácil</option>
-                <option value="Médio">Médio</option>
-                <option value="Difícil">Difícil</option>
+                <option value="100">Fácil</option>
+                <option value="250">Médio</option>
+                <option value="500">Difícil</option>
             </select>
             <button class="botao botao--estilo modal--confirma" type="submit">Alterar</button>
             <button class="botao botao--estilo modal--cancela" id="fechar-alt" type="reset">Cancelar</button>
@@ -172,7 +172,7 @@
         <form action="/delete-task" method="POST">
             <h1 class="titulo">Excluir tarefa</h1>
             <p>Você realmente deseja deletar essa tarefa?</p>
-            <input type="hidden" name="id" id="idDeletar">
+            <input type="text" name="id" id="idDeletar">
             <button class="botao botao--estilo modal--confirma" type="submit">Sim</button>
             <button class="botao botao--estilo modal--cancela" id="fechar-dlt" type="reset">Cancelar</button>
         </form>

@@ -60,3 +60,24 @@ body {
     vertical-align: bottom;
     width: 40px;
 }
+
+@media screen and (min-width: 768px) {
+    .titulo--destaque {
+        font-size: 1.25rem;
+    }
+
+    .titulo {
+        font-size: 1.5rem;
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+    .titulo--destaque {
+        font-size: 1.35rem;
+    }
+
+    .titulo {
+        font-size: 1.25rem;
+    }
+}
