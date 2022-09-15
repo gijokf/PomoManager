@@ -12,13 +12,12 @@ $(function () {
     });
 
     //Modal Alterar
-    const abrir_alt = $('#abrir-alt');
+    const abrir_alt = $('.alterar');
     const fechar_alt = $('#fechar-alt');
-    let idAlterar = abrir_alt.val();
 
     abrir_alt.on('click', function () {
         $('#modal_container_alt').addClass('show');
-        $('#idAlterar').val(idAlterar)
+        $('#idAlterar').val($(this).attr("data-id"))
     });
 
     fechar_alt.on('click', function () {
@@ -26,13 +25,12 @@ $(function () {
     });
 
     //Modal Deletar
-    const abrir_dlt = $('#abrir-dlt');
+    const abrir_dlt = $('.deletar');
     const fechar_dlt = $('#fechar-dlt');
-    let idDeletar = abrir_dlt.val();
 
     abrir_dlt.on('click', function () {
         $('#modal_container_dlt').addClass('show');
-        $('#idDeletar').val(idDeletar)
+        $('#idDeletar').val($(this).attr("data-id"));
     });
 
     fechar_dlt.on('click', function () {
@@ -40,13 +38,12 @@ $(function () {
     });
 
     //Modal Concluir
-    const abrir_clr = $('#abrir-clr');
+    const abrir_clr = $('.concluir');
     const fechar_clr = $('#fechar-clr');
-    let idConcluir = abrir_dlt.val();
 
     abrir_clr.on('click', function () {
         $('#modal_container_clr').addClass('show');
-        $('#idConcluir').val(idConcluir)
+        $('#idConcluir').val($(this).attr("data-id"))
     });
 
     fechar_clr.on('click', function () {

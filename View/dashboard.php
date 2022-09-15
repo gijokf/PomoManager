@@ -67,13 +67,13 @@
                     </div>
 
                     <div class="tabela--botoes">
-                        <button class="botao__tabela--estilo alterar" id="abrir-alt" value="<?= $task["taskID"]; ?>">
+                        <button class="botao__tabela--estilo alterar" id="abrir-alt" data-id="<?= $task["taskID"]; ?>">
                             <i data-feather="edit" aria-hidden="true"></i>
                         </button>
-                        <button class="botao__tabela--estilo deletar" id="abrir-dlt" value="<?= $task["taskID"]; ?>">
+                        <button class="botao__tabela--estilo deletar" id="abrir-dlt" data-id="<?= $task["taskID"]; ?>">
                             <i data-feather="trash-2" aria-hidden="true"></i>
                         </button>
-                        <button class="botao__tabela--estilo concluir" id="abrir-clr" value="<?= $task["taskID"]; ?>">
+                        <button class="botao__tabela--estilo concluir" id="abrir-clr" data-id="<?= $task["taskID"]; ?>">
                             <i data-feather="check-square" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -150,7 +150,7 @@
 <div class="modal-container" id="modal_container_alt">
     <div class="modal">
         <form action="" method="POST">
-            <input type="hidden" name="id" id="idAlterar" value="">
+            <input type="hidden" name="id" id="idAlterar">
             <h1 class="titulo">Alterar tarefa</h1>
             <p>Digite a nova descrição da tarefa</p>
             <input class="input" name="descricao" type="text">
@@ -169,10 +169,10 @@
 <!-- Modal Deletar -->
 <div class="modal-container" id="modal_container_dlt">
     <div class="modal">
-        <form action="/delete-task?<?= $task['taskID'] ?>" method="POST">
+        <form action="/delete-task" method="POST">
             <h1 class="titulo">Excluir tarefa</h1>
             <p>Você realmente deseja deletar essa tarefa?</p>
-            <input type="hidden" name="id" id="idDeletar" value="<?= $task["taskID"]; ?>">
+            <input type="hidden" name="id" id="idDeletar">
             <button class="botao botao--estilo modal--confirma" type="submit">Sim</button>
             <button class="botao botao--estilo modal--cancela" id="fechar-dlt" type="reset">Cancelar</button>
         </form>
@@ -185,7 +185,7 @@
         <form action="" method="POST">
             <h1 class="titulo">Concluir tarefa</h1>
             <p>Confirme a conclusão da tarefa para ganhar EXP!</p>
-            <input type="hidden" name="id" id="idConcluir" value="<?= $task["taskID"]; ?>">
+            <input type="hidden" name="id" id="idConcluir">
             <button class="botao botao--estilo modal--confirma" type="submit">Concluir!</button>
             <button class="botao botao--estilo modal--cancela" id="fechar-clr" type="reset">Cancelar</button>
         </form>
