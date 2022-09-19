@@ -62,8 +62,9 @@
             foreach ($tasks as $task): ?>
                 <div class="tabela__tarefas">
                     <div class="tabela--detalhes">
-                        <input type="checkbox" value="<?= $task["taskID"]; ?>">
-                        <p><?= $task["taskDescription"]; ?></p>
+                        <input type="checkbox" name="task" value="<?= $task["taskID"]; ?>"
+                               data-name="<?= $task["taskDescription"]; ?>">
+                        <label><?= $task["taskDescription"]; ?></label>
                     </div>
 
                     <div class="tabela--botoes">
@@ -87,7 +88,7 @@
         <div class="center__container">
             <div class="card__central">
                 <div class="timer_conteudo">
-                    <h1 class="titulo" id="taskDescricao">Tarefa atual</h1>
+                    <h1 class="titulo" id="taskDescricao">Nenhuma tarefa selecionada...</h1>
                     <p class="titulo--destaque timer--tempo" id="timer"></p>
                     <button class="botao botao--estilo botao__iniciar" id="botao_timer">Iniciar</button>
                 </div>
@@ -150,10 +151,10 @@
 <div class="modal-container" id="modal_container_alt">
     <div class="modal">
         <form action="/update-task" method="POST">
-            <input type="text" name="id" id="idAlterar">
+            <input type="hidden" name="taskID" id="idAlterar">
             <h1 class="titulo">Alterar tarefa</h1>
             <p>Digite a nova descrição da tarefa</p>
-            <input class="input" name="descricao" type="text">
+            <input class="input" name="taskDescription" type="text">
             <label for="tier">Selecione a dificuldade da tarefa:</label>
             <select class="input" id="tier" name="tier">
                 <option value="100">Fácil</option>
@@ -172,7 +173,7 @@
         <form action="/delete-task" method="POST">
             <h1 class="titulo">Excluir tarefa</h1>
             <p>Você realmente deseja deletar essa tarefa?</p>
-            <input type="text" name="id" id="idDeletar">
+            <input type="hidden" name="taskID" id="idDeletar">
             <button class="botao botao--estilo modal--confirma" type="submit">Sim</button>
             <button class="botao botao--estilo modal--cancela" id="fechar-dlt" type="reset">Cancelar</button>
         </form>
@@ -197,5 +198,6 @@
 <script src="js/jQuery/jquery-3.6.0.js"></script>
 <script src="js/modal.js"></script>
 <script src="js/timer.js"></script>
+<script src="js/selectTask.js"></script>
 </body>
 </html>

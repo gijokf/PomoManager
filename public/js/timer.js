@@ -1,6 +1,5 @@
 $(function () {
     const botaoIniciar = $('#botao_timer.botao__iniciar');
-    const botaoParar = $('#botao_timer.botao__parar');
     const click_sound = new Audio('assets/click.mp3');
     const sino = new Audio('assets/bell.mp3');
     const timer = $('#timer');
