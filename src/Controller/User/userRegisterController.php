@@ -39,11 +39,11 @@ class userRegisterController extends User implements controllersInterface
                     session_start();
                     $_SESSION['msg'] = '<p class="notificacao--estilo erro">
                                         <i data-feather="alert-triangle" aria-hidden="true"></i>
-                                        Arquivo muito grande! Máx: 2MB</p>';
+                                        Arquivo muito grande! Máx.: 2MB</p>';
                     header('Location: /register');
                 }
 
-                $folder = "../public/assets/img/uploads/";
+                $folder = "assets/img/uploads/";
                 $fileName = $avatar['name'];
                 $newFileName = uniqid();
                 $extension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));

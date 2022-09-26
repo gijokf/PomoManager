@@ -1,31 +1,37 @@
 .cabecalho {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 
-  box-sizing: border-box;
+    box-sizing: border-box;
 
-  width: 100%;
+    width: 100%;
 
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  margin-bottom: 30px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 30px;
 }
 
 .dashboard__cabecalho {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .user__cabecalho {
-  display: flex;
+    display: flex;
 }
 
 .user__cabecalho--info {
-  margin-left: 1rem;
+    margin-left: 1rem;
 }
 
 .user__avatar {
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+
+.botao__cabecalho {
+    display: flex;
+    align-items: center;
 }

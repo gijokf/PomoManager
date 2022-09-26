@@ -29,20 +29,26 @@
 
     $userID = $_SESSION["userID"];
     $userName = $_SESSION["userName"];
+    $userAvatar = $_SESSION["userAvatar"];
     ?>
 </head>
 <body>
 <header class="dashboard__cabecalho container">
     <div class="user__cabecalho">
-        <img src="https://dummyimage.com/80x80/000/fff" class="user__avatar" alt="Avatar do usuário"/>
+        <img src="<?= $userAvatar ?>" class="user__avatar" alt="Avatar do usuário"/>
         <div class="titulo user__cabecalho--info">
             <h2><?= $userName; ?></h2>
             <h3>Lvl. 1</h3>
         </div>
     </div>
 
-    <a class="botao botao--estilo logout" href="/logout"><i data-feather="log-out" aria-hidden="true"></i>Sair
-    </a>
+    <div class="botao__cabecalho">
+        <button class="botao config" id="abrir-conf">
+            <i data-feather="settings" aria-hidden="true"></i>
+        </button>
+        <a class="botao botao--estilo logout" href="/logout"><i data-feather="log-out" aria-hidden="true"></i>Sair
+        </a>
+    </div>
 </header>
 <main class="card__main">
     <div class="card__grid-container container">
@@ -137,9 +143,9 @@
             <input class="input" name="descricao" type="text">
             <label for="tier">Selecione a dificuldade da tarefa:</label>
             <select class="input" id="tier" name="tier">
-                <option value="Fácil">Fácil</option>
-                <option value="Médio">Médio</option>
-                <option value="Difícil">Difícil</option>
+                <option value="100">Fácil</option>
+                <option value="250">Médio</option>
+                <option value="500">Difícil</option>
             </select>
             <button class="botao botao--estilo modal--confirma" type="submit">Inserir</button>
             <button class="botao botao--estilo modal--cancela" id="fechar" type="reset">Cancelar</button>

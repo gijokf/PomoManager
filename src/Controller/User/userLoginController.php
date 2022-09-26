@@ -37,6 +37,7 @@ class userLoginController extends User implements controllersInterface
                     if ($verifyPass) {
                         $_SESSION["userID"] = $datas["userID"];
                         $_SESSION["userName"] = $datas["userName"];
+                        $_SESSION["userAvatar"] = $datas["userAvatar"];
 
                         header('Location: /dashboard');
                     } else {
