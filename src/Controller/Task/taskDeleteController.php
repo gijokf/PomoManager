@@ -24,6 +24,17 @@ class taskDeleteController extends Task implements controllersInterface
         $sqlQuery->bindParam(2, $userID, PDO::PARAM_INT);
         $sqlQuery->execute();
 
+        $_SESSION['toast'] = '<div class="notificacao--toast ativo">
+                                <div class="notificacao--conteudo">
+                                    <i data-feather="check" aria-hidden="true"></i>
+                                    <div class="mensagem">
+                                        <span class="titulo">Sucesso</span>
+                                        <span>Tarefa foi excluída.</span>
+                                    </div>
+                                </div>
+                                    <i data-feather="x"></i>
+                               </div>';
+
         header('Location: /dashboard');
     }
 }

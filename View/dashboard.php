@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/components/input.css"/>
     <link rel="stylesheet" href="css/components/tabela.css"/>
     <link rel="stylesheet" href="css/components/modal.css"/>
+    <link rel="stylesheet" href="css/components/notificacao.css"/>
     <script src="https://unpkg.com/feather-icons"></script>
 
     <?php
@@ -33,6 +34,15 @@
     ?>
 </head>
 <body>
+<?php
+//Notificação
+if (isset($_SESSION['toast'])):
+    echo $_SESSION['toast'];
+endif;
+
+unset($_SESSION['toast']);
+?>
+
 <header class="dashboard__cabecalho container">
     <div class="user__cabecalho">
         <img src="<?= $userAvatar ?>" class="user__avatar" alt="Avatar do usuário"/>
@@ -50,6 +60,7 @@
         </a>
     </div>
 </header>
+
 <main class="card__main">
     <div class="card__grid-container container">
 
@@ -205,5 +216,6 @@
 <script src="js/modal.js"></script>
 <script src="js/timer.js"></script>
 <script src="js/selectTask.js"></script>
+<script src="js/toastNotification.js"></script>
 </body>
 </html>

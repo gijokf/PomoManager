@@ -2,11 +2,10 @@
 
 namespace PomoManager\Controller\Task;
 
-use PDO;
 use PomoManager\Controller\controllersInterface;
-use PomoManager\Entity\Task;
+use PomoManager\Entity\User;
 
-class taskUpdateController extends Task implements controllersInterface
+class taskCompleteController extends User implements controllersInterface
 {
     public function __construct()
     {
@@ -15,14 +14,15 @@ class taskUpdateController extends Task implements controllersInterface
 
     public function processaRequisicao(): void
     {
-        $taskID = filter_input(INPUT_POST, 'taskID', FILTER_SANITIZE_NUMBER_INT);
-        $taskDescription = filter_input(INPUT_POST, 'taskDescription', FILTER_DEFAULT);
+
         $taskExp = filter_input(INPUT_POST, 'tier', FILTER_SANITIZE_NUMBER_INT);
 
-        $sqlQuery = $this->connection->prepare('UPDATE tasks SET taskDescription = ?, taskExp = ? WHERE taskID = ?');
-        $sqlQuery->bindParam(1, $taskDescription, PDO::PARAM_STR);
-        $sqlQuery->bindParam(2, $taskExp, PDO::PARAM_INT);
-        $sqlQuery->bindParam(3, $taskID, PDO::PARAM_INT);
+        $currentExp = $this->getUserExp();
+
+        $newExp = $currentExp + $taskExp;
+
+        $sqlQuery = $this->connection->prepare('UPDATE users SET userExp = ?');
+        $sqlQuery->bindParam(1, $newExp, PDO::PARAM_INT);
         $sqlQuery->execute();
 
         session_start();
@@ -30,8 +30,8 @@ class taskUpdateController extends Task implements controllersInterface
                                 <div class="notificacao--conteudo">
                                     <i data-feather="check" aria-hidden="true"></i>
                                     <div class="mensagem">
-                                        <span class="titulo">Sucesso!</span>
-                                        <span>Tarefa alterada com sucesso.</span>
+                                        <span>Sucesso!</span>
+                                        <span>Tarefa concluída com sucesso.</span>
                                     </div>
                                 </div>
                                     <i data-feather="x"></i>

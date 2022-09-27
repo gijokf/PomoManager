@@ -2,6 +2,7 @@
 @import url(_reset.css);
 
 body {
+    min-height: 100vh;
     font-family: var(--familia-corpo);
     font-size: var(--tamanho-corpo);
     color: var(--preto);
