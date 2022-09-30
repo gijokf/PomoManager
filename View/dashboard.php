@@ -215,7 +215,6 @@ unset($_SESSION['toast']);
 <script src="js/jQuery/jquery-3.6.0.js"></script>
 <script src="js/modal.js"></script>
 <script src="js/timer.js"></script>
-<script src="js/selectTask.js"></script>
 <script src="js/toastNotification.js"></script>
 </body>
 </html>
