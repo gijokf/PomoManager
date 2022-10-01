@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/components/tabela.css"/>
     <link rel="stylesheet" href="css/components/modal.css"/>
     <link rel="stylesheet" href="css/components/notificacao.css"/>
+    <link rel="stylesheet" href="css/components/experiencia.css"/>
     <script src="https://unpkg.com/feather-icons"></script>
 
     <?php
@@ -51,6 +52,19 @@ unset($_SESSION['toast']);
             <h3>Lvl. 1</h3>
         </div>
     </div>
+
+    <!--    Barra de exp-->
+    <div class="skill-bars">
+        <div class="bar">
+            <div class="info">
+                <span>Experiência</span>
+            </div>
+            <div class="progress-line html">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
 
     <div class="botao__cabecalho">
         <button class="botao config" id="abrir-conf">

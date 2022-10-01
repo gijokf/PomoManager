@@ -48,11 +48,37 @@ $(function () {
     const descansoLongo = $('#descansoLongo');
 
     botaoPomodoro.on('click', function () {
-        Pomodoro();
+        if (intervalo !== null) {
+            if (confirm("Você tem certeza que quer parar o timer atual?")) {
+                parar();
+
+                segundosRestantes = 1500;
+
+                atualizaTimer();
+                botaoIniciar.text('Iniciar');
+                botaoIniciar.removeClass('botao__parar');
+            }
+        } else {
+            segundosRestantes = 1500;
+            atualizaTimer();
+        }
     });
 
     descansoCurto.on('click', function () {
-        Curto();
+        if (intervalo !== null) {
+            if (confirm("Você tem certeza que quer parar o timer atual?")) {
+                parar();
+
+                segundosRestantes = 300;
+                atualizaTimer();
+
+                botaoIniciar.text('Iniciar');
+                botaoIniciar.removeClass('botao__parar')
+            }
+        } else {
+            segundosRestantes = 300;
+            atualizaTimer();
+        }
     });
 
     descansoLongo.on('click', function () {
@@ -65,8 +91,6 @@ $(function () {
                 atualizaTimer();
                 botaoIniciar.text('Iniciar');
                 botaoIniciar.removeClass('botao__parar');
-            } else {
-                return;
             }
         } else {
             segundosRestantes = 900;
@@ -75,41 +99,29 @@ $(function () {
     });
 
     function Pomodoro() {
-        if (intervalo !== null) {
-            if (confirm("Você tem certeza que quer parar o timer atual?")) {
-                parar();
+        segundosRestantes = 1000;
 
-                segundosRestantes = 1500;
-
-                atualizaTimer();
-                botaoIniciar.text('Iniciar');
-                botaoIniciar.removeClass('botao__parar');
-            } else {
-                return;
-            }
-        } else {
-            segundosRestantes = 1500;
-            atualizaTimer();
-        }
+        atualizaTimer();
+        botaoIniciar.text('Iniciar');
+        botaoIniciar.removeClass('botao__parar');
     }
 
     function Curto() {
-        if (intervalo !== null) {
-            if (confirm("Você tem certeza que quer parar o timer atual?")) {
-                parar();
+        ciclo += 1;
+        segundosRestantes = 3;
+        atualizaTimer();
 
-                segundosRestantes = 300;
+        botaoIniciar.text('Iniciar');
+        botaoIniciar.removeClass('botao__parar')
+    }
 
-                atualizaTimer();
-                botaoIniciar.text('Iniciar');
-                botaoIniciar.removeClass('botao__parar');
-            } else {
-                return;
-            }
-        } else {
-            segundosRestantes = 300;
-            atualizaTimer();
-        }
+    function Longo() {
+        ciclo = 0;
+        segundosRestantes = 10;
+
+        atualizaTimer();
+        botaoIniciar.text('Iniciar');
+        botaoIniciar.removeClass('botao__parar');
     }
 
     function atualizaTimer() {
@@ -145,19 +157,9 @@ $(function () {
 
     function tempoAcabou() {
         if (ciclo <= 3) {
-            click_sound.play();
-            segundosRestantes = 3;
-            ciclo += 1;
-            atualizaTimer();
-            botaoIniciar.text('Iniciar');
-            botaoIniciar.removeClass('botao__parar');
+            Curto();
         } else {
-            click_sound.play();
-            segundosRestantes = 10;
-            ciclo = 0;
-            atualizaTimer();
-            botaoIniciar.text('Iniciar');
-            botaoIniciar.removeClass('botao__parar');
+            Longo();
         }
 
         clearInterval(intervalo);
