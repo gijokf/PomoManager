@@ -4,7 +4,6 @@ $(function () {
     const sino = new Audio('assets/bell.mp3');
     const timer = $('#timer');
     const taskSelected = $("input:checkbox");
-    let ciclo = 0;
 
     taskSelected.on('click', function () {
         let $box = $(this);
@@ -23,7 +22,9 @@ $(function () {
     });
 
     let intervalo = null;
-    let segundosRestantes = 5;
+    let segundosRestantes = 1500;
+    let ciclo = 0;
+    let pomodoroTimer = true;
 
     atualizaTimer();
 
@@ -99,7 +100,8 @@ $(function () {
     });
 
     function Pomodoro() {
-        segundosRestantes = 1000;
+        pomodoroTimer = true;
+        segundosRestantes = 1500;
 
         atualizaTimer();
         botaoIniciar.text('Iniciar');
@@ -108,7 +110,8 @@ $(function () {
 
     function Curto() {
         ciclo += 1;
-        segundosRestantes = 3;
+        pomodoroTimer = false;
+        segundosRestantes = 300;
         atualizaTimer();
 
         botaoIniciar.text('Iniciar');
@@ -117,7 +120,7 @@ $(function () {
 
     function Longo() {
         ciclo = 0;
-        segundosRestantes = 10;
+        segundosRestantes = 900;
 
         atualizaTimer();
         botaoIniciar.text('Iniciar');
@@ -142,8 +145,7 @@ $(function () {
             atualizaTimer();
 
             if (segundosRestantes === 0) {
-                sino.play();
-                tempoAcabou();
+                sino.play().then(r => tempoAcabou());
             }
         }, 1000);
     }
@@ -156,9 +158,13 @@ $(function () {
     }
 
     function tempoAcabou() {
-        if (ciclo <= 3) {
+        if (ciclo <= 3 && pomodoroTimer === true) {
             Curto();
         } else {
+            Pomodoro();
+        }
+
+        if (ciclo === 4) {
             Longo();
         }
 
