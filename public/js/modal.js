@@ -43,7 +43,8 @@ $(function () {
 
     abrir_clr.on('click', function () {
         $('#modal_container_clr').addClass('show');
-        $('#idConcluir').val($(this).attr("data-id"))
+        $('#idConcluir').val($(this).attr("data-id"));
+        $('#taskExperience').val($(this).attr("data-exp"));
     });
 
     fechar_clr.on('click', function () {

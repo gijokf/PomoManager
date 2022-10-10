@@ -6,10 +6,10 @@ use PDO;
 use PomoManager\Controller\controllersInterface;
 use PomoManager\Entity\Task;
 
-class taskListController extends Task implements controllersInterface
+class taskCompletedListController extends Task implements controllersInterface
 {
     public $connection;
-    public $tasks;
+    public $tasksCompleted;
 
     public function __construct()
     {
@@ -19,11 +19,11 @@ class taskListController extends Task implements controllersInterface
     public function processaRequisicao(): void
     {
         $userID = $_SESSION['userID'];
-        $sqlQuery = $this->connection->prepare('SELECT taskID, taskDescription, taskExp from tasks where userID = ? and taskStatus = "INCOMPLETO"');
+        $sqlQuery = $this->connection->prepare('SELECT taskID, taskDescription, taskExp from tasks where userID = ? and taskStatus = "COMPLETO"');
         $sqlQuery->bindParam(1, $userID, PDO::PARAM_INT);
         $sqlQuery->execute();
 
-        $this->tasks = $sqlQuery->fetchAll(PDO::FETCH_ASSOC);
+        $this->tasksCompleted = $sqlQuery->fetchAll(PDO::FETCH_ASSOC);
 
     }
 }

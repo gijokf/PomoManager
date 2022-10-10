@@ -32,6 +32,7 @@
     $userID = $_SESSION["userID"];
     $userName = $_SESSION["userName"];
     $userAvatar = $_SESSION["userAvatar"];
+    $userExperience = $_SESSION["userExperience"];
     ?>
 </head>
 <body>
@@ -105,7 +106,8 @@ unset($_SESSION['toast']);
                         <button class="botao__tabela--estilo deletar" id="abrir-dlt" data-id="<?= $task["taskID"]; ?>">
                             <i data-feather="trash-2" aria-hidden="true"></i>
                         </button>
-                        <button class="botao__tabela--estilo concluir" id="abrir-clr" data-id="<?= $task["taskID"]; ?>">
+                        <button class="botao__tabela--estilo concluir" id="abrir-clr" data-id="<?= $task["taskID"]; ?>"
+                                data-exp="<?= $task["taskExp"] ?>">
                             <i data-feather="check-square" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -129,32 +131,30 @@ unset($_SESSION['toast']);
         <!-- Tarefas completas -->
         <div class="side__container">
             <h1 class="titulo--destaque">Completas</h1>
-            <div class="tabela__tarefas">
-                <div class="tabela--detalhes">
-                    <input type="checkbox" value="">
-                    <p>teste</p>
+
+            <?php
+            require_once('../src/Controller/Task/taskListController.php');
+
+            use PomoManager\Controller\Task\taskCompletedListController;
+
+            $tasksCompleted = [];
+            $taskCompletedListController = new taskCompletedListController();
+            $taskCompletedListController->processaRequisicao();
+            $tasksCompleted = $taskCompletedListController->tasksCompleted;
+            foreach ($tasksCompleted as $taskCompleted): ?>
+                <div class="tabela__tarefas">
+                    <div class="tabela--detalhes">
+                        <label><?= $taskCompleted["taskDescription"]; ?></label>
+                    </div>
                 </div>
-                <div class="tabela--botoes">
-                    <button class="botao__tabela--estilo alterar" id="abrir-alt" value="">
-                        <i data-feather="edit" aria-hidden="true"></i>
-                    </button>
-                    <button class="botao__tabela--estilo deletar" id="abrir-dlt" value="">
-                        <i data-feather="trash-2" aria-hidden="true"></i>
-                    </button>
-                    <button class="botao__tabela--estilo concluir" id="abrir-clr" value="">
-                        <i data-feather="check-square" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 
     <div class="card__botoes">
-
         <button class="botao botao--estilo" id="pomodoro">Pomodoro</button>
         <button class="botao botao--estilo" id="descansoCurto">Descanso Curto</button>
         <button class="botao botao--estilo" id="descansoLongo">Descanso Longo</button>
-
     </div>
 </main>
 
@@ -214,10 +214,11 @@ unset($_SESSION['toast']);
 <!-- Modal Concluir -->
 <div class="modal-container" id="modal_container_clr">
     <div class="modal">
-        <form action="" method="POST">
+        <form action="/complete-task" method="POST">
             <h1 class="titulo">Concluir tarefa</h1>
             <p>Confirme a conclusão da tarefa para ganhar EXP!</p>
-            <input type="hidden" name="id" id="idConcluir">
+            <input type="hidden" name="taskID" id="idConcluir">
+            <input type="text" name="tier" id="taskExperience">
             <button class="botao botao--estilo modal--confirma" type="submit">Concluir!</button>
             <button class="botao botao--estilo modal--cancela" id="fechar-clr" type="reset">Cancelar</button>
         </form>

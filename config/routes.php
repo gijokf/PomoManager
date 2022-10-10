@@ -6,6 +6,7 @@ use PomoManager\Controller\dashboardController;
 use PomoManager\Controller\loginFormController;
 use PomoManager\Controller\registerFormController;
 use PomoManager\Controller\Task\taskAddController;
+use PomoManager\Controller\Task\taskCompleteController;
 use PomoManager\Controller\Task\taskDeleteController;
 use PomoManager\Controller\Task\taskUpdateController;
 use PomoManager\Controller\User\userLoginController;
@@ -21,5 +22,6 @@ return [
     '/logout' => userLogoutController::class,
     '/add-task' => taskAddController::class,
     '/update-task' => taskUpdateController::class,
-    '/delete-task' => taskDeleteController::class
+    '/delete-task' => taskDeleteController::class,
+    '/complete-task' => taskCompleteController::class
 ];

@@ -11,7 +11,7 @@ class User extends Connect
     private string $userName;
     private string $userPassword;
     private string $userAvatar;
-    private int $userExp;
+    private ?int $userExperience = 0;
 
     function __construct()
     {
@@ -86,17 +86,40 @@ class User extends Connect
     /**
      * @return int
      */
-    public function getUserExp(): int
+    public function getUserExperience(): int
     {
-        return $this->userExp;
+        return $this->userExperience;
     }
 
     /**
-     * @param int $userExp
+     * @param int $userExperience
      */
-    public function setUserExp(int $userExp): void
+    public function setUserExperience(int $userExperience): void
     {
-        $this->userExp = $userExp;
+        $this->userExperience = $userExperience;
+    }
+
+    //Calcula o XP
+    public function calcXP($L, $const)
+    {
+        $XPsqrt = ($L - 1) / $const;
+        $XP = $XPsqrt * $XPsqrt;
+        return $XP;
+    }
+
+    //Calcula o level
+    public function calcLevel($XP, $const)
+    {
+        $L = floor(1 + sqrt($XP) * $const);
+        return $L;
+    }
+
+    //XP para o próximo level
+    public function xpToNextLevel($L, $const)
+    {
+        $XPNsqrt = ($L) / $const;
+        $XPsqrt = ($L - 1) / $const;
+        return ($XPNsqrt * $XPNsqrt) - ($XPsqrt * $XPsqrt);
     }
 
 }
