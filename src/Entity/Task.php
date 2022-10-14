@@ -12,7 +12,6 @@ class Task extends Connect
     private string $taskDescription;
     private string $taskTier;
     private string $taskStart;
-    private string $taskEnd;
     private int $taskExp;
 
     function __construct()

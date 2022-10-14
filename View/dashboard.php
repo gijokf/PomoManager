@@ -32,7 +32,7 @@
     $userID = $_SESSION["userID"];
     $userName = $_SESSION["userName"];
     $userAvatar = $_SESSION["userAvatar"];
-    $userExperience = $_SESSION["userExperience"];
+    $userExp = $_SESSION["userExp"];
     ?>
 </head>
 <body>
@@ -164,8 +164,8 @@ unset($_SESSION['toast']);
     <div class="modal">
         <form action="/add-task" method="POST">
             <h1 class="titulo">Inserir tarefa</h1>
-            <p>Digite a descrição da tarefa</p>
-            <input class="input" name="descricao" type="text">
+            <label for="taskDescription">Digite a descrição da tarefa</label>
+            <input class="input" id="taskDescription" name="taskDescription" type="text">
             <label for="tier">Selecione a dificuldade da tarefa:</label>
             <select class="input" id="tier" name="tier">
                 <option value="100">Fácil</option>
@@ -184,7 +184,7 @@ unset($_SESSION['toast']);
         <form action="/update-task" method="POST">
             <input type="hidden" name="taskID" id="idAlterar">
             <h1 class="titulo">Alterar tarefa</h1>
-            <p>Digite a nova descrição da tarefa</p>
+            <label for="taskDescription">Digite a descrição da tarefa</label>
             <input class="input" name="taskDescription" type="text">
             <label for="tier">Selecione a dificuldade da tarefa:</label>
             <select class="input" id="tier" name="tier">

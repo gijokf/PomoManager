@@ -38,7 +38,7 @@ class userLoginController extends User implements controllersInterface
                         $_SESSION["userID"] = $datas["userID"];
                         $_SESSION["userName"] = $datas["userName"];
                         $_SESSION["userAvatar"] = $datas["userAvatar"];
-                        $_SESSION["userExperience"] = $datas["userExperience"];
+                        $_SESSION["userExp"] = $datas["userExp"];
 
                         header('Location: /dashboard');
                     } else {

@@ -17,10 +17,10 @@ class taskAddController extends Task implements controllersInterface
     {
         session_start();
         $userID = $_SESSION['userID'];
-        $taskDescription = filter_input(INPUT_POST, 'descricao');
+        $taskDescription = filter_input(INPUT_POST, 'taskDescription', FILTER_DEFAULT);
         $taskExp = filter_input(INPUT_POST, 'tier', FILTER_SANITIZE_NUMBER_INT);
 
-        $sqlQuery = $this->connection->prepare('INSERT INTO tasks (userID, taskDescription, taskExp) VALUES (?, ?, ?)');
+        $sqlQuery = $this->connection->prepare('INSERT INTO tasks (userID, taskDescription, taskExp, taskStatus) VALUES (?, ?, ?, "INCOMPLETO")');
         $sqlQuery->bindParam(1, $userID, PDO::PARAM_INT);
         $sqlQuery->bindParam(2, $taskDescription, PDO::PARAM_STR);
         $sqlQuery->bindParam(3, $taskExp, PDO::PARAM_INT);

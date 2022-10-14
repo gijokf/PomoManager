@@ -3,6 +3,7 @@
 namespace PomoManager\Controller\Task;
 
 use PDO;
+use PDOException;
 use PomoManager\Controller\controllersInterface;
 use PomoManager\Entity\User;
 
@@ -21,24 +22,25 @@ class taskCompleteController extends User implements controllersInterface
         $taskID = filter_input(INPUT_POST, 'taskID', FILTER_SANITIZE_NUMBER_INT);
         $taskExp = filter_input(INPUT_POST, 'tier', FILTER_SANITIZE_NUMBER_INT);
 
-        $sqlQuery = $this->connection->prepare('SELECT userExperience FROM users WHERE userID = ?');
-        $sqlQuery->bindParam(1, $userID, PDO::PARAM_INT);
-        $sqlQuery->execute();
-        $currentExp = $sqlQuery->fetch(PDO::FETCH_ASSOC);
+        try {
+            $sqlQuery = $this->connection->prepare('SELECT userExp FROM users WHERE userID = ?');
+            $sqlQuery->bindParam(1, $userID, PDO::PARAM_INT);
+            $sqlQuery->execute();
+            $currentExp = $sqlQuery->fetch(PDO::FETCH_ASSOC);
 
-        $newExp = intval($currentExp['userExperience']) + $taskExp;
+            $newExp = intval($currentExp['userExperience']) + $taskExp;
 
-        $sqlQuery = $this->connection->prepare('UPDATE users SET userExperience = ? WHERE userID = ?');
-        $sqlQuery->bindParam(1, $newExp, PDO::PARAM_INT);
-        $sqlQuery->bindParam(2, $userID, PDO::PARAM_INT);
-        $sqlQuery->execute();
+            $sqlQuery = $this->connection->prepare('UPDATE users SET userExp = ? WHERE userID = ?');
+            $sqlQuery->bindParam(1, $newExp, PDO::PARAM_INT);
+            $sqlQuery->bindParam(2, $userID, PDO::PARAM_INT);
+            $sqlQuery->execute();
 
-        $sqlQuery = $this->connection->prepare('UPDATE tasks SET taskStatus = "COMPLETO" WHERE taskID = ?');
-        $sqlQuery->bindParam(1, $taskID, PDO::PARAM_INT);
-        $sqlQuery->execute();
+            $sqlQuery = $this->connection->prepare('UPDATE tasks SET taskStatus = "COMPLETO" WHERE taskID = ?');
+            $sqlQuery->bindParam(1, $taskID, PDO::PARAM_INT);
+            $sqlQuery->execute();
 
-        session_start();
-        $_SESSION['toast'] = '<div class="notificacao--toast ativo">
+            session_start();
+            $_SESSION['toast'] = '<div class="notificacao--toast ativo">
                                 <div class="notificacao--conteudo">
                                     <i data-feather="check" aria-hidden="true"></i>
                                     <div class="mensagem">
@@ -49,6 +51,10 @@ class taskCompleteController extends User implements controllersInterface
                                     <i data-feather="x"></i>
                                </div>';
 
-        header('Location: /dashboard');
+            header('Location: /dashboard');
+        } catch (PDOException $e) {
+            echo "Erro:" . $e->getMessage();
+            die();
+        }
     }
 }
