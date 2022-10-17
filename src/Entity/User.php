@@ -11,7 +11,7 @@ class User extends Connect
     private string $userName;
     private string $userPassword;
     private string $userAvatar;
-    private ?int $userExperience = 0;
+    private int $userExp;
 
     function __construct()
     {
@@ -86,17 +86,17 @@ class User extends Connect
     /**
      * @return int
      */
-    public function getUserExperience(): int
+    public function getUserExp(): int
     {
-        return $this->userExperience;
+        return $this->userExp;
     }
 
     /**
-     * @param int $userExperience
+     * @param int $userExp
      */
-    public function setUserExperience(int $userExperience): void
+    public function setUserExp(int $userExp): void
     {
-        $this->userExperience = $userExperience;
+        $this->userExp = $userExp;
     }
 
     //Calcula o XP

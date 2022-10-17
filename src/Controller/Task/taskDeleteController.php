@@ -28,7 +28,7 @@ class taskDeleteController extends Task implements controllersInterface
                                 <div class="notificacao--conteudo">
                                     <i data-feather="check" aria-hidden="true"></i>
                                     <div class="mensagem">
-                                        <span class="titulo">Sucesso</span>
+                                        <span class="titulo">Sucesso!</span>
                                         <span>Tarefa foi excluída.</span>
                                     </div>
                                 </div>

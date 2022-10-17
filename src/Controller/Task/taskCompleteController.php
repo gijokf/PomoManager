@@ -28,7 +28,7 @@ class taskCompleteController extends User implements controllersInterface
             $sqlQuery->execute();
             $currentExp = $sqlQuery->fetch(PDO::FETCH_ASSOC);
 
-            $newExp = intval($currentExp['userExperience']) + $taskExp;
+            $newExp = intval($currentExp['userExp']) + $taskExp;
 
             $sqlQuery = $this->connection->prepare('UPDATE users SET userExp = ? WHERE userID = ?');
             $sqlQuery->bindParam(1, $newExp, PDO::PARAM_INT);
@@ -50,6 +50,8 @@ class taskCompleteController extends User implements controllersInterface
                                 </div>
                                     <i data-feather="x"></i>
                                </div>';
+
+            $_SESSION['userExp'] = $newExp;
 
             header('Location: /dashboard');
         } catch (PDOException $e) {

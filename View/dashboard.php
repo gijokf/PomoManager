@@ -33,6 +33,15 @@
     $userName = $_SESSION["userName"];
     $userAvatar = $_SESSION["userAvatar"];
     $userExp = $_SESSION["userExp"];
+
+    require_once('../src/Entity/User.php');
+
+    use PomoManager\Entity\User;
+
+    $User = new User();
+
+    $userLevel = $User->calcLevel($userExp, .1);
+    $nextXP = $User->xpToNextLevel($userLevel, .1);
     ?>
 </head>
 <body>
@@ -50,7 +59,7 @@ unset($_SESSION['toast']);
         <img src="<?= $userAvatar ?>" class="user__avatar" alt="Avatar do usuário"/>
         <div class="titulo user__cabecalho--info">
             <h2><?= $userName; ?></h2>
-            <h3>Lvl. 1</h3>
+            <h3>Lvl. <?= $userLevel; ?></h3>
         </div>
     </div>
 
@@ -63,6 +72,10 @@ unset($_SESSION['toast']);
             <div class="progress-line html">
                 <span></span>
             </div>
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+            <span>Exp. atual: <?= $userExp; ?></span>
+            <span>Exp. pro prox nivel: <?= $nextXP; ?></span>
         </div>
     </div>
 
@@ -218,7 +231,7 @@ unset($_SESSION['toast']);
             <h1 class="titulo">Concluir tarefa</h1>
             <p>Confirme a conclusão da tarefa para ganhar EXP!</p>
             <input type="hidden" name="taskID" id="idConcluir">
-            <input type="text" name="tier" id="taskExperience">
+            <input type="hidden" name="tier" id="taskExperience">
             <button class="botao botao--estilo modal--confirma" type="submit">Concluir!</button>
             <button class="botao botao--estilo modal--cancela" id="fechar-clr" type="reset">Cancelar</button>
         </form>
