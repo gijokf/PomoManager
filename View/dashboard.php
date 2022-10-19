@@ -132,6 +132,8 @@ unset($_SESSION['toast']);
 
         <!-- Timer -->
         <div class="center__container">
+            <h1>Data</h1>
+            <input type="date" id="taskDate">
             <div class="card__central">
                 <div class="timer_conteudo">
                     <h1 class="titulo" id="taskDescricao">Nenhuma tarefa selecionada...</h1>

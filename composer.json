@@ -11,6 +11,7 @@
     },
     "require": {
         "mikecao/flight": "^2.0",
-      "ext-pdo": "*"
+      "ext-pdo": "*",
+      "ext-dom": "*"
     }
 }

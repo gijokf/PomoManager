@@ -5,6 +5,14 @@ $(function () {
     const timer = $('#timer');
     const taskSelected = $("input:checkbox");
 
+    var data = new Date();
+
+    var ano = data.getFullYear();
+    var mes = data.getMonth() + 1;
+    var dia = data.getDate();
+
+    $('#taskDate').val(ano + '-' + mes + '-' + dia);
+
     taskSelected.on('click', function () {
         let $box = $(this);
         if ($box.is(":checked")) {

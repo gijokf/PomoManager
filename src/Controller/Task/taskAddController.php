@@ -20,10 +20,13 @@ class taskAddController extends Task implements controllersInterface
         $taskDescription = filter_input(INPUT_POST, 'taskDescription', FILTER_DEFAULT);
         $taskExp = filter_input(INPUT_POST, 'tier', FILTER_SANITIZE_NUMBER_INT);
 
-        $sqlQuery = $this->connection->prepare('INSERT INTO tasks (userID, taskDescription, taskExp, taskStatus) VALUES (?, ?, ?, "INCOMPLETO")');
+        $taskDate = date("Y-m-d");
+
+        $sqlQuery = $this->connection->prepare('INSERT INTO tasks (userID, taskDescription, taskExp, taskStatus, taskDate) VALUES (?, ?, ?, "INCOMPLETO", ?)');
         $sqlQuery->bindParam(1, $userID, PDO::PARAM_INT);
         $sqlQuery->bindParam(2, $taskDescription, PDO::PARAM_STR);
         $sqlQuery->bindParam(3, $taskExp, PDO::PARAM_INT);
+        $sqlQuery->bindParam(4, $taskDate, PDO::PARAM_STR);
         $sqlQuery->execute();
 
         $_SESSION['toast'] = '<div class="notificacao--toast ativo">
