@@ -103,8 +103,8 @@ unset($_SESSION['toast']);
 
         <!-- Timer -->
         <div class="center__container">
-            <label>Data
-                <input type="date" id="taskDate" value="">
+            <label class="label">Data
+                <input class=input type="date" id="taskDate">
             </label>
             <div class="card__central">
                 <div class="timer_conteudo">

@@ -9,10 +9,11 @@ $(function () {
     taskDate.val(ano + '-' + mes + '-' + dia);
 
     taskDate.on('change', function () {
-        $.ajax('/listar', {
+        $.ajax({
             type: "POST",
             data: {"taskDate": taskDate.val()},
-            success: function (data) {
+            success: function () {
+
             }
 
         })
