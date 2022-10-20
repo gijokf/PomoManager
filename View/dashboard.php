@@ -34,14 +34,14 @@
     $userAvatar = $_SESSION["userAvatar"];
     $userExp = $_SESSION["userExp"];
 
-    require_once('../src/Entity/User.php');
-
     use PomoManager\Entity\User;
 
     $User = new User();
 
     $userLevel = $User->calcLevel($userExp, .1);
-    $nextXP = $User->xpToNextLevel($userLevel, .1);
+    $atualXP = $User->calcXP($userLevel, .1);
+    $xpToNextLevel = $User->xpToNextLevel($userLevel, .1);
+    $nextXP = $xpToNextLevel + $atualXP;
     ?>
 </head>
 <body>
@@ -74,8 +74,8 @@ unset($_SESSION['toast']);
             </div>
         </div>
         <div style="display: flex;justify-content: space-between;">
-            <span>Exp. atual: <?= $userExp; ?></span>
-            <span>Exp. pro prox nivel: <?= $nextXP; ?></span>
+            <span id="expAtual"><?= $userExp; ?></span>
+            <span id="expProx"><?= $nextXP; ?></span>
         </div>
     </div>
 
@@ -95,45 +95,17 @@ unset($_SESSION['toast']);
         <!-- Tarefas -->
         <div class="side__container">
             <h1 class="titulo--destaque">Tarefas</h1>
-            <?php
-            require_once('../src/Controller/Task/taskListController.php');
 
-            use PomoManager\Controller\Task\taskListController;
-
-            $tasks = [];
-            $taskListController = new taskListController();
-            $taskListController->processaRequisicao();
-            $tasks = $taskListController->tasks;
-            foreach ($tasks as $task): ?>
-                <div class="tabela__tarefas">
-                    <div class="tabela--detalhes">
-                        <input type="checkbox" name="task" value="<?= $task["taskID"]; ?>"
-                               data-name="<?= $task["taskDescription"]; ?>">
-                        <label><?= $task["taskDescription"]; ?></label>
-                    </div>
-
-                    <div class="tabela--botoes">
-                        <button class="botao__tabela--estilo alterar" id="abrir-alt" data-id="<?= $task["taskID"]; ?>">
-                            <i data-feather="edit" aria-hidden="true"></i>
-                        </button>
-                        <button class="botao__tabela--estilo deletar" id="abrir-dlt" data-id="<?= $task["taskID"]; ?>">
-                            <i data-feather="trash-2" aria-hidden="true"></i>
-                        </button>
-                        <button class="botao__tabela--estilo concluir" id="abrir-clr" data-id="<?= $task["taskID"]; ?>"
-                                data-exp="<?= $task["taskExp"] ?>">
-                            <i data-feather="check-square" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+            <?php include __DIR__ . '/listar-tarefas.php'; ?>
 
             <button class="botao botao--tarefa" id="abrir">Inserir tarefa</button>
         </div>
 
         <!-- Timer -->
         <div class="center__container">
-            <h1>Data</h1>
-            <input type="date" id="taskDate">
+            <label>Data
+                <input type="date" id="taskDate" value="">
+            </label>
             <div class="card__central">
                 <div class="timer_conteudo">
                     <h1 class="titulo" id="taskDescricao">Nenhuma tarefa selecionada...</h1>
@@ -147,22 +119,7 @@ unset($_SESSION['toast']);
         <div class="side__container">
             <h1 class="titulo--destaque">Completas</h1>
 
-            <?php
-            require_once('../src/Controller/Task/taskListController.php');
-
-            use PomoManager\Controller\Task\taskCompletedListController;
-
-            $tasksCompleted = [];
-            $taskCompletedListController = new taskCompletedListController();
-            $taskCompletedListController->processaRequisicao();
-            $tasksCompleted = $taskCompletedListController->tasksCompleted;
-            foreach ($tasksCompleted as $taskCompleted): ?>
-                <div class="tabela__tarefas">
-                    <div class="tabela--detalhes">
-                        <label><?= $taskCompleted["taskDescription"]; ?></label>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+            <?php include __DIR__ . '/listar-completas.php'; ?>
         </div>
     </div>
 
@@ -201,6 +158,8 @@ unset($_SESSION['toast']);
             <h1 class="titulo">Alterar tarefa</h1>
             <label for="taskDescription">Digite a descrição da tarefa</label>
             <input class="input" name="taskDescription" type="text">
+            <label for="taskDescription">Selecione a data da tarefa</label>
+            <input class="input" name="taskDate" type="date">
             <label for="tier">Selecione a dificuldade da tarefa:</label>
             <select class="input" id="tier" name="tier">
                 <option value="100">Fácil</option>
@@ -245,6 +204,8 @@ unset($_SESSION['toast']);
 <script src="js/jQuery/jquery-3.6.0.js"></script>
 <script src="js/modal.js"></script>
 <script src="js/timer.js"></script>
+<script src="js/leveling.js"></script>
 <script src="js/toastNotification.js"></script>
+<script src="js/dateFilter.js"></script>
 </body>
 </html>

@@ -103,8 +103,7 @@ class User extends Connect
     public function calcXP($L, $const)
     {
         $XPsqrt = ($L - 1) / $const;
-        $XP = $XPsqrt * $XPsqrt;
-        return $XP;
+        return $XPsqrt * $XPsqrt;
     }
 
     //Calcula o level
