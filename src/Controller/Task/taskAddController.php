@@ -2,6 +2,7 @@
 
 namespace PomoManager\Controller\Task;
 
+use DateTime;
 use PDO;
 use PomoManager\Controller\controllersInterface;
 use PomoManager\Entity\Task;
@@ -20,7 +21,8 @@ class taskAddController extends Task implements controllersInterface
         $taskDescription = filter_input(INPUT_POST, 'taskDescription', FILTER_DEFAULT);
         $taskExp = filter_input(INPUT_POST, 'tier', FILTER_SANITIZE_NUMBER_INT);
 
-        $taskDate = date("Y-m-d");
+        $currentDate = new DateTime();
+        $taskDate = $currentDate->format('Y-m-d');
 
         $sqlQuery = $this->connection->prepare('INSERT INTO tasks (userID, taskDescription, taskExp, taskStatus, taskDate) VALUES (?, ?, ?, "INCOMPLETO", ?)');
         $sqlQuery->bindParam(1, $userID, PDO::PARAM_INT);

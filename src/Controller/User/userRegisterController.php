@@ -74,6 +74,9 @@ class userRegisterController extends User implements controllersInterface
                     $sqlQuery->bindParam(4, $userAvatar, PDO::PARAM_LOB);
                     $sqlQuery->execute();
 
+                    $sqlQuery = $this->connection->prepare('INSERT INTO profile (userID, profileShortBreak, profileLongBreak, profilePomodoro) VALUES (LAST_INSERT_ID(), 300, 900,1500)');
+                    $sqlQuery->execute();
+
                     session_start();
                     $_SESSION['msg'] = '<p class="notificacao--estilo sucesso">
                                         <i data-feather="check-circle" aria-hidden="true"></i>

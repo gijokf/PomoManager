@@ -1,21 +1,53 @@
 $(function () {
     const taskDate = $('#taskDate');
-    let data = new Date();
+    let date = new Date();
 
-    let ano = data.getFullYear();
-    let mes = data.getMonth() + 1;
-    let dia = data.getDate();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
 
-    taskDate.val(ano + '-' + mes + '-' + dia);
+    taskDate.val(year + '-' + month + '-' + day);
+
+    let dateFilter = taskDate.val()
+
+    $.ajax({
+        type: "POST",
+        url: "/list-tasks",
+        data: {dateFilter},
+        success: function (result) {
+            $(".side__container.tasks").html(result)
+        }
+    })
+
+    $.ajax({
+        type: "POST",
+        url: "/list-completed",
+        data: {dateFilter},
+        success: function (result) {
+            $(".side__container.completed").html(result)
+        }
+    })
 
     taskDate.on('change', function () {
+        dateFilter = taskDate.val()
+
         $.ajax({
             type: "POST",
-            data: {"taskDate": taskDate.val()},
-            success: function () {
-
+            url: "/list-tasks",
+            data: {dateFilter},
+            success: function (result) {
+                $(".side__container.tasks").html(result)
             }
-
         })
+
+        $.ajax({
+            type: "POST",
+            url: "/list-completed",
+            data: {dateFilter},
+            success: function (result) {
+                $(".side__container.completed").html(result)
+            }
+        })
+
     })
 })

@@ -2,12 +2,10 @@
 
 namespace PomoManager\Controller\Task;
 
-use DateTime;
 use PDO;
-use PomoManager\Controller\controllersInterface;
 use PomoManager\Entity\Task;
 
-class taskListController extends Task implements controllersInterface
+class taskListController extends Task
 {
     public $connection;
     public $tasks;
@@ -17,19 +15,13 @@ class taskListController extends Task implements controllersInterface
         parent::__construct();
     }
 
-    public function processaRequisicao(): void
+    public function processaRequisicao(string $taskDate = ''): void
     {
+        session_start();
+
         $userID = $_SESSION['userID'];
 
-        if (!isset($_POST['taskDate'])) {
-            $currentDate = new DateTime();
-            $taskDate = $currentDate->format('Y-m-d');
-        } else {
-            $taskDate = $_POST['taskDate'];
-        }
-
-
-        $sqlQuery = $this->connection->prepare('SELECT taskID, taskDescription, taskExp from tasks where userID = ? and taskStatus = "INCOMPLETO" and taskDate = ?');
+        $sqlQuery = $this->connection->prepare('SELECT * from tasks where userID = ? and taskStatus = "INCOMPLETO" and taskDate = ?');
         $sqlQuery->bindParam(1, $userID, PDO::PARAM_INT);
         $sqlQuery->bindParam(2, $taskDate, PDO::PARAM_STR);
         $sqlQuery->execute();

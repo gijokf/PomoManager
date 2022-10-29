@@ -31,3 +31,9 @@
     max-width: 100%;
     text-align: center;
 }
+
+.modal__config {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

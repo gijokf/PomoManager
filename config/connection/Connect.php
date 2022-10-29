@@ -10,6 +10,8 @@ const DATABASENAME = 'db_pomomanager';
 const USER = 'root';
 const PASSWORD = '';
 
+date_default_timezone_set('America/Sao_Paulo');
+
 class Connect
 {
     public $connection;
@@ -21,12 +23,10 @@ class Connect
 
     function connectDatabase(): void
     {
-        try
-        {
-            $this->connection = new PDO('mysql:host='.HOST.';dbname='.DATABASENAME, USER, PASSWORD);
-        }
-        catch (PDOException $e) {
-            echo "Erro:".$e->getMessage();
+        try {
+            $this->connection = new PDO('mysql:host=' . HOST . ';dbname=' . DATABASENAME, USER, PASSWORD);
+        } catch (PDOException $e) {
+            echo "Erro:" . $e->getMessage();
             die();
         }
     }

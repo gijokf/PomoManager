@@ -17,12 +17,14 @@ class taskUpdateController extends Task implements controllersInterface
     {
         $taskID = filter_input(INPUT_POST, 'taskID', FILTER_SANITIZE_NUMBER_INT);
         $taskDescription = filter_input(INPUT_POST, 'taskDescription', FILTER_DEFAULT);
+        $taskDate = filter_input(INPUT_POST, 'taskDate', FILTER_DEFAULT);
         $taskExp = filter_input(INPUT_POST, 'tier', FILTER_SANITIZE_NUMBER_INT);
 
-        $sqlQuery = $this->connection->prepare('UPDATE tasks SET taskDescription = ?, taskExp = ? WHERE taskID = ?');
+        $sqlQuery = $this->connection->prepare('UPDATE tasks SET taskDescription = ?, taskExp = ?, taskDate = ? WHERE taskID = ?');
         $sqlQuery->bindParam(1, $taskDescription, PDO::PARAM_STR);
         $sqlQuery->bindParam(2, $taskExp, PDO::PARAM_INT);
-        $sqlQuery->bindParam(3, $taskID, PDO::PARAM_INT);
+        $sqlQuery->bindParam(3, $taskDate, PDO::PARAM_STR);
+        $sqlQuery->bindParam(4, $taskID, PDO::PARAM_INT);
         $sqlQuery->execute();
 
         session_start();

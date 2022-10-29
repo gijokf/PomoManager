@@ -109,8 +109,7 @@ class User extends Connect
     //Calcula o level
     public function calcLevel($XP, $const)
     {
-        $L = floor(1 + sqrt($XP) * $const);
-        return $L;
+        return round(1 + sqrt($XP) * $const);
     }
 
     //XP para o próximo level

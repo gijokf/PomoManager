@@ -31,6 +31,10 @@
     border: 2px solid var(--preto);
 }
 
+.user__avatar:hover {
+    cursor: pointer;
+}
+
 
 .botao__cabecalho {
     display: flex;

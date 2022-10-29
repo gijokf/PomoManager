@@ -1,6 +1,6 @@
 $(function () {
     //Modal Inserir
-    const abrir = $('#abrir');
+    const abrir = $('.inserir');
     const fechar = $('#fechar');
 
     abrir.on('click', function () {
@@ -17,7 +17,12 @@ $(function () {
 
     abrir_alt.on('click', function () {
         $('#modal_container_alt').addClass('show');
-        $('#idAlterar').val($(this).attr("data-id"))
+        $('#idAlterar').val($(this).attr("data-id"));
+        $('#altDescricao').val($(this).attr("data-name"));
+        $('#altData').val($(this).attr("data-date"));
+        $('#altExp').val($(this).attr("data-exp"));
+
+        console.log($(this).attr("data-exp"));
     });
 
     fechar_alt.on('click', function () {
@@ -49,5 +54,17 @@ $(function () {
 
     fechar_clr.on('click', function () {
         $('#modal_container_clr').removeClass('show');
+    });
+
+    //Modal Config
+    const abrir_config = $('#config');
+    const fechar_config = $('#fechar-config');
+
+    abrir_config.on('click', function () {
+        $('#modal_container_config').addClass('show');
+    });
+
+    fechar_config.on('click', function () {
+        $('#modal_container_config').removeClass('show');
     });
 });

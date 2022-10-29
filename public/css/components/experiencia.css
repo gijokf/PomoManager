@@ -61,7 +61,7 @@
     border-radius: 10px;
     transform: scaleX(0);
     transform-origin: left;
-    background: #0f0f97;
+    background: var(--vermelho);
     animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 

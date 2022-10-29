@@ -4,6 +4,9 @@ $(function () {
     const sino = new Audio('assets/bell.mp3');
     const timer = $('#timer');
     const taskSelected = $("input:checkbox");
+    const timePomodoro = $('#timePomodoro').val() * 60;
+    const timeShort = $('#timeShortBreak').val() * 60;
+    const timeLong = $('#timeLongBreak').val() * 60
 
     taskSelected.on('click', function () {
         let $box = $(this);
@@ -22,7 +25,7 @@ $(function () {
     });
 
     let intervalo = null;
-    let segundosRestantes = 1500;
+    let segundosRestantes = timePomodoro;
     let ciclo = 0;
     let pomodoroTimer = true;
 
@@ -53,14 +56,14 @@ $(function () {
             if (confirm("Você tem certeza que quer parar o timer atual?")) {
                 parar();
 
-                segundosRestantes = 1500;
+                segundosRestantes = timePomodoro;
 
                 atualizaTimer();
                 botaoIniciar.text('Iniciar');
                 botaoIniciar.removeClass('botao__parar');
             }
         } else {
-            segundosRestantes = 1500;
+            segundosRestantes = timePomodoro;
             atualizaTimer();
         }
     });
@@ -70,14 +73,14 @@ $(function () {
             if (confirm("Você tem certeza que quer parar o timer atual?")) {
                 parar();
 
-                segundosRestantes = 300;
+                segundosRestantes = timeShort;
                 atualizaTimer();
 
                 botaoIniciar.text('Iniciar');
                 botaoIniciar.removeClass('botao__parar')
             }
         } else {
-            segundosRestantes = 300;
+            segundosRestantes = timeShort;
             atualizaTimer();
         }
     });
@@ -87,21 +90,21 @@ $(function () {
             if (confirm("Você tem certeza que quer parar o timer atual?")) {
                 parar();
 
-                segundosRestantes = 900;
+                segundosRestantes = timeLong;
 
                 atualizaTimer();
                 botaoIniciar.text('Iniciar');
                 botaoIniciar.removeClass('botao__parar');
             }
         } else {
-            segundosRestantes = 900;
+            segundosRestantes = timeLong;
             atualizaTimer();
         }
     });
 
     function Pomodoro() {
         pomodoroTimer = true;
-        segundosRestantes = 1500;
+        segundosRestantes = timePomodoro;
 
         atualizaTimer();
         botaoIniciar.text('Iniciar');
@@ -111,7 +114,7 @@ $(function () {
     function Curto() {
         ciclo += 1;
         pomodoroTimer = false;
-        segundosRestantes = 300;
+        segundosRestantes = timeShort;
         atualizaTimer();
 
         botaoIniciar.text('Iniciar');
@@ -120,7 +123,7 @@ $(function () {
 
     function Longo() {
         ciclo = 0;
-        segundosRestantes = 900;
+        segundosRestantes = timeLong;
 
         atualizaTimer();
         botaoIniciar.text('Iniciar');

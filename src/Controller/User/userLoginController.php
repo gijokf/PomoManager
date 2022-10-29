@@ -37,8 +37,19 @@ class userLoginController extends User implements controllersInterface
                     if ($verifyPass) {
                         $_SESSION["userID"] = $datas["userID"];
                         $_SESSION["userName"] = $datas["userName"];
+                        $_SESSION["userEmail"] = $datas["userEmail"];
                         $_SESSION["userAvatar"] = $datas["userAvatar"];
                         $_SESSION["userExp"] = $datas["userExp"];
+
+                        $sqlQuery = $this->connection->prepare("SELECT * FROM profile WHERE userID = ?");
+                        $sqlQuery->bindParam(1, $_SESSION["userID"], PDO::PARAM_INT);
+                        $sqlQuery->execute();
+
+                        $datas = $sqlQuery->fetch();
+
+                        $_SESSION["timePomodoro"] = $datas["profilePomodoro"];
+                        $_SESSION["timeShortBreak"] = $datas["profileShortBreak"];
+                        $_SESSION["timeLongBreak"] = $datas["profileLongBreak"];
 
                         header('Location: /dashboard');
                     } else {

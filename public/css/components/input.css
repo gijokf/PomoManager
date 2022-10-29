@@ -38,3 +38,7 @@
 .input--image:hover {
     cursor: pointer;
 }
+
+.input__timer {
+    width: 15% !important;
+}
