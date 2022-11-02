@@ -3,26 +3,9 @@ $(function () {
     const click_sound = new Audio('assets/click.mp3');
     const sino = new Audio('assets/bell.mp3');
     const timer = $('#timer');
-    const taskSelected = $("input:checkbox");
     const timePomodoro = $('#timePomodoro').val() * 60;
     const timeShort = $('#timeShortBreak').val() * 60;
     const timeLong = $('#timeLongBreak').val() * 60
-
-    taskSelected.on('click', function () {
-        let $box = $(this);
-        if ($box.is(":checked")) {
-
-            let group = "input:checkbox[name='" + $box.attr("name") + "']";
-
-            $(group).prop("checked", false);
-            $box.prop("checked", true);
-
-            $("#taskDescricao").text($box.attr("data-name"));
-        } else {
-            $box.prop("checked", false);
-            $("#taskDescricao").text('Nenhuma tarefa selecionada...')
-        }
-    });
 
     let intervalo = null;
     let segundosRestantes = timePomodoro;

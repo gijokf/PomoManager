@@ -43,9 +43,9 @@ class userUpdateProfileController extends User implements controllersInterface
 
                 $oldAvatarPath = $sqlQuery->fetch();
 
-//                if ($oldAvatarPath !== '') {
-//                    unlink($oldAvatarPath);
-//                }
+                if ($oldAvatarPath !== '') {
+                    unlink($oldAvatarPath["userAvatar"]);
+                }
 
                 $folder = "assets/img/uploads/";
                 $fileName = $avatar['name'];

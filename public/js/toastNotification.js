@@ -5,4 +5,8 @@ $(function () {
     close.on('click', function () {
         toast.removeClass('ativo');
     });
+
+    setTimeout(() => {
+        toast.removeClass('ativo')
+    }, 3000);
 });

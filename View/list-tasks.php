@@ -1,9 +1,9 @@
 <script src="js/jQuery/jquery-3.6.0.js"></script>
 <script src="https://unpkg.com/feather-icons"></script>
 <script>feather.replace()</script>
-<script src="js/timer.js"></script>
+<!--<script src="js/timer.js"></script>-->
 <script src="js/modal.js"></script>
-
+<script src="js/checkTask.js"></script>
 <h1 class="titulo--destaque">Tarefas</h1>
 
 <?php

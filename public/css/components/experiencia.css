@@ -11,6 +11,11 @@
     /*border-radius: 10px;*/
 }
 
+.skill-bars--info {
+    display: flex;
+    justify-content: space-between;
+}
+
 .skill-bars .bar {
     margin: 20px 0;
 }

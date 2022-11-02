@@ -35,29 +35,22 @@
     $userName = $_SESSION["userName"];
     $userEmail = $_SESSION["userEmail"];
     $userAvatar = $_SESSION["userAvatar"];
+    $userExp = $_SESSION["userExp"];
     $pomodoro = $_SESSION["timePomodoro"] / 60;
     $shortBreak = $_SESSION["timeShortBreak"] / 60;
     $longBreak = $_SESSION["timeLongBreak"] / 60;
-
-    //    $userExp = $_SESSION["userExp"];
 
     use PomoManager\Entity\User;
 
     $User = new User();
 
-    $userExp = 200;
     $userLevel = $User->calcLevel($userExp, .1);
     $xpToNextLevel = $User->xpToNextLevel($userLevel, .1);
     $atualXP = $User->calcXP($userLevel, .1);
-    $progressXP2 = $userExp - $xpToNextLevel;
 
     if ($userExp >= $atualXP) {
-//        $userLevelAux = ceil($userLevel);
-//        $atualXP = $User->calcXP($userLevelAux, .1);
         $progressXP = $userExp - $atualXP;
     } else {
-//        $userLevelAux = floor($userLevel);
-//        $atualXP = $User->calcXP($userLevelAux, .1);
         $progressXP = $atualXP - $userExp;
     }
 
@@ -94,12 +87,9 @@ unset($_SESSION['toast']);
                 <span></span>
             </div>
         </div>
-        <div style="display: flex;justify-content: space-between;">
-            <span>Usuario: <?= $userExp; ?></span>
+        <div class="skill-bars--info">
             <span id="expProx"><?= $progressXP; ?></span>
-            <span id="expAtual"><?= $atualXP; ?></span>
-            <span><?= $progressXP2; ?></span>
-            <span>Prox. <?= $xpToNextLevel; ?></span>
+            <span id="expAtual"><?= $xpToNextLevel; ?></span>
         </div>
     </div>
 
@@ -122,7 +112,7 @@ unset($_SESSION['toast']);
 
         <!-- Timer -->
         <div class="center__container">
-            <label class="label">Data
+            <label>Data
                 <input class=input type="date" id="taskDate">
             </label>
             <div class="card__central">
@@ -155,10 +145,11 @@ unset($_SESSION['toast']);
     <div class="modal">
         <form action="/add-task" method="POST">
             <h1 class="titulo">Inserir tarefa</h1>
+            <p class="modal__alert">Há campos vazios!</p>
             <label for="taskDescription">Digite a descrição da tarefa</label>
-            <input class="input" id="taskDescription" name="taskDescription" type="text">
+            <input class="input" name="taskDescription" type="text" id="taskDescription" placeholder="Descrição">
             <label for="tier">Selecione a dificuldade da tarefa:</label>
-            <select class="input" id="tier" name="tier">
+            <select class="input" name="tier" id="tier">
                 <option value="100">Fácil</option>
                 <option value="250">Médio</option>
                 <option value="500">Difícil</option>
@@ -175,7 +166,7 @@ unset($_SESSION['toast']);
         <form action="/update-task" method="POST">
             <input type="hidden" name="taskID" id="idAlterar">
             <h1 class="titulo">Alterar tarefa</h1>
-            <p>Há campos vazios!</p>
+            <p class="modal__alert">Há campos vazios!</p>
             <label for="taskDescription">Digite a descrição da tarefa</label>
             <input class="input" name="taskDescription" type="text" id="altDescricao">
             <label for="taskDate">Selecione a data da tarefa</label>
