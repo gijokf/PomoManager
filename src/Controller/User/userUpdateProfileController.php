@@ -25,10 +25,9 @@ class userUpdateProfileController extends User implements controllersInterface
             $timePomodoro = filter_input(INPUT_POST, 'timePomodoro', FILTER_SANITIZE_NUMBER_INT);
             $timeShortBreak = filter_input(INPUT_POST, 'timeShortBreak', FILTER_SANITIZE_NUMBER_INT);
             $timeLongBreak = filter_input(INPUT_POST, 'timeLongBreak', FILTER_SANITIZE_NUMBER_INT);
+            $avatar = $_FILES['avatar'];
 
-            if (isset($_FILES['avatar'])) {
-                $avatar = $_FILES['avatar'];
-
+            if ($avatar['name'] !== '') {
                 if ($avatar['size'] > 2097152) {
                     session_start();
                     $_SESSION['msg'] = '<p class="notificacao--estilo erro">
@@ -43,9 +42,7 @@ class userUpdateProfileController extends User implements controllersInterface
 
                 $oldAvatarPath = $sqlQuery->fetch();
 
-                if ($oldAvatarPath !== '') {
-                    unlink($oldAvatarPath["userAvatar"]);
-                }
+                unlink($oldAvatarPath["userAvatar"]);
 
                 $folder = "assets/img/uploads/";
                 $fileName = $avatar['name'];
@@ -54,6 +51,15 @@ class userUpdateProfileController extends User implements controllersInterface
 
                 $userAvatar = $folder . $newFileName . "." . $extension;
                 move_uploaded_file($avatar['tmp_name'], $userAvatar);
+
+                $sqlQuery = $this->connection->prepare('UPDATE users SET userAvatar = ? WHERE userID = ?');
+                $sqlQuery->bindParam(1, $userAvatar, PDO::PARAM_LOB);
+                $sqlQuery->bindParam(2, $userID, PDO::PARAM_INT);
+                $sqlQuery->execute();
+
+                if ($sqlQuery->execute()) {
+                    $_SESSION["userAvatar"] = $userAvatar;
+                }
             }
 
             $timePomodoro = $timePomodoro * 60;
@@ -74,18 +80,14 @@ class userUpdateProfileController extends User implements controllersInterface
                     $_SESSION["timeLongBreak"] = $timeLongBreak;
                 }
 
-                $sqlQuery = $this->connection->prepare('UPDATE users SET userName = ?, userEmail = ?, userAvatar = ? WHERE userID = ?');
+                $sqlQuery = $this->connection->prepare('UPDATE users SET userName = ?, userEmail = ? WHERE userID = ?');
                 $sqlQuery->bindParam(1, $userName, PDO::PARAM_STR);
                 $sqlQuery->bindParam(2, $userEmail, PDO::PARAM_STR);
-                $sqlQuery->bindParam(3, $userAvatar, PDO::PARAM_LOB);
-                $sqlQuery->bindParam(4, $userID, PDO::PARAM_INT);
+                $sqlQuery->bindParam(3, $userID, PDO::PARAM_INT);
                 $sqlQuery->execute();
 
                 if ($sqlQuery->execute()) {
-
-
                     $_SESSION["userName"] = $userName;
-                    $_SESSION["userAvatar"] = $userAvatar;
                 }
 
                 $_SESSION['toast'] = '<div class="notificacao--toast ativo">
@@ -106,7 +108,6 @@ class userUpdateProfileController extends User implements controllersInterface
                 echo "Erro:" . $e->getMessage();
                 die();
             }
-
         }
     }
 }

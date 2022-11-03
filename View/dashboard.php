@@ -167,11 +167,11 @@ unset($_SESSION['toast']);
             <input type="hidden" name="taskID" id="idAlterar">
             <h1 class="titulo">Alterar tarefa</h1>
             <p class="modal__alert">Há campos vazios!</p>
-            <label for="taskDescription">Digite a descrição da tarefa</label>
+            <label for="altDescricao">Digite a descrição da tarefa</label>
             <input class="input" name="taskDescription" type="text" id="altDescricao">
-            <label for="taskDate">Selecione a data da tarefa</label>
+            <label for="altData">Selecione a data da tarefa</label>
             <input class="input" name="taskDate" type="date" id="altData">
-            <label for="tier">Selecione a dificuldade da tarefa:</label>
+            <label for="altExp">Selecione a dificuldade da tarefa:</label>
             <select class="input" name="tier" id="altExp">
                 <option value="100">Fácil</option>
                 <option value="250">Médio</option>

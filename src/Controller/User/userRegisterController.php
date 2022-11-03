@@ -22,6 +22,7 @@ class userRegisterController extends User implements controllersInterface
             $userEmail = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
             $userPassword = filter_input(INPUT_POST, 'password', FILTER_UNSAFE_RAW);
             $userCheckPass = filter_input(INPUT_POST, 'checkPassword', FILTER_UNSAFE_RAW);
+            $avatar = $_FILES['avatar'];
 
             if ($userPassword !== $userCheckPass) {
                 header('Location: /register');
@@ -32,9 +33,7 @@ class userRegisterController extends User implements controllersInterface
                 return;
             }
 
-            if (isset($_FILES['avatar'])) {
-                $avatar = $_FILES['avatar'];
-
+            if ($avatar['name'] !== '') {
                 if ($avatar['size'] > 2097152) {
                     session_start();
                     $_SESSION['msg'] = '<p class="notificacao--estilo erro">
@@ -50,6 +49,8 @@ class userRegisterController extends User implements controllersInterface
 
                 $userAvatar = $folder . $newFileName . "." . $extension;
                 move_uploaded_file($avatar['tmp_name'], $userAvatar);
+            } else {
+                $userAvatar = 'assets/img/default-profile.png';
             }
 
             $hashPassword = password_hash($userPassword, PASSWORD_ARGON2I);
@@ -74,7 +75,7 @@ class userRegisterController extends User implements controllersInterface
                     $sqlQuery->bindParam(4, $userAvatar, PDO::PARAM_LOB);
                     $sqlQuery->execute();
 
-                    $sqlQuery = $this->connection->prepare('INSERT INTO profile (userID, profileShortBreak, profileLongBreak, profilePomodoro) VALUES (LAST_INSERT_ID(), 300, 900,1500)');
+                    $sqlQuery = $this->connection->prepare('INSERT INTO profile (userID, profileShortBreak, profileLongBreak, profilePomodoro) VALUES (LAST_INSERT_ID(), 300, 900, 1500)');
                     $sqlQuery->execute();
 
                     session_start();
