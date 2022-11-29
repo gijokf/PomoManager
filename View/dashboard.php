@@ -136,7 +136,6 @@ unset($_SESSION['toast']);
         <button class="botao botao--estilo" id="pomodoro">Pomodoro</button>
         <button class="botao botao--estilo" id="descansoCurto">Descanso Curto</button>
         <button class="botao botao--estilo" id="descansoLongo">Descanso Longo</button>
-        <button class="botao botao--estilo" id="apresentacao">Apresentação</button>
     </div>
 </main>
 

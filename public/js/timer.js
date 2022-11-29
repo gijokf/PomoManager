@@ -33,7 +33,6 @@ $(function () {
     const botaoPomodoro = $('#pomodoro');
     const descansoCurto = $('#descansoCurto');
     const descansoLongo = $('#descansoLongo');
-    const apresentacao = $('#apresentacao');
 
     botaoPomodoro.on('click', function () {
         if (intervalo !== null) {
@@ -85,24 +84,6 @@ $(function () {
             atualizaTimer();
         }
     });
-
-    //Botão apenas para apresentação do TCC
-    apresentacao.on('click', function () {
-        if (intervalo !== null) {
-            if (confirm("Você tem certeza que quer parar o timer atual?")) {
-                parar();
-
-                segundosRestantes = 60;
-
-                atualizaTimer();
-                botaoIniciar.text('Iniciar');
-                botaoIniciar.removeClass('botao__parar');
-            }
-        } else {
-            segundosRestantes = 60;
-            atualizaTimer();
-        }
-    })
 
     function Pomodoro() {
         pomodoroTimer = true;
