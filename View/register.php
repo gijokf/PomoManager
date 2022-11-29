@@ -70,6 +70,7 @@
                             name="password"
                             placeholder="Senha"
                             class="input"
+                            minlength="6"
                     />
                     <label class="label" for="checkPassword">Confirme sua senha</label>
                     <input
@@ -78,6 +79,7 @@
                             name="checkPassword"
                             placeholder="Confirme sua senha"
                             class="input"
+                            minlength="6"
                     />
                     <ul class="formulario--senha">
                         <li id="pass6chars">A senha possui no mínimo 6 caracteres.</li>
