@@ -1,0 +1,6 @@
+.rodape {
+    background: var(--verde);
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+}

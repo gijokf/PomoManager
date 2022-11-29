@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/components/input.css"/>
     <link rel="stylesheet" href="css/components/botao.css"/>
     <link rel="stylesheet" href="css/components/notificacao.css"/>
-
+    <link rel="stylesheet" href="css/components/rodape.css"/>
     <link rel="script" href="js/checkForm.js"/>
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
@@ -96,7 +96,9 @@
         </div>
     </main>
 </div>
-
+<footer class="rodape">
+    <h1>Created by: Giovanni Fushimi and Gabriel Falcão</h1>
+</footer>
 <script src="js/jQuery/jquery-3.6.0.js"></script>
 <script src="js/checkForm.js"></script>
 <script>feather.replace()</script>
